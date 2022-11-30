@@ -1,0 +1,20 @@
+{
+    "greek": {
+        "save": "Αποθήκευση",
+        "done": "Ολοκλήρωση",
+        "instructions": "Οδηγίες",
+        "changelang": "Αλλαγή γλώσσας",
+        "comments": "Σχόλια",
+
+        "addcattext": "Προσθήκη κατηγορίας"
+    },
+    "english": {
+        "save": "Save for later",
+        "done": "Submit",
+        "changelang": "Change language",
+        "instructions": "Instructions",
+        "comments": "Comments",
+
+        "addcattext": "Add category"
+    }
+  }
