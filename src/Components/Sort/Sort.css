@@ -6,10 +6,10 @@
 /* VARIABLES */
 
     :root {
-        --headerColor: rgb(13, 13, 90);
-        --subheaderColor: lightblue;
-        --backgroundColor: rgb(216, 227, 233);
-        --backgroundRGBColor: 216, 227, 233;
+        --headerColor: rgb(100, 23, 41);
+        --subheaderColor: rgb(216, 172, 151);
+        --backgroundColor: rgb(228, 210, 202);
+        --backgroundRGBColor: 228, 210, 202;
         --categoryColor: rgb(255, 255, 104);
         --cardColor: rgb(255, 255, 138);
         --droppableCategory: rgb(253, 253, 153);
@@ -753,8 +753,9 @@
 /* CATEGORY CSS */
 
     .category {
-        width: 96%;
+        width: 93%;
         min-height: 29vh;
+        margin-top: 5px;
         margin-bottom: 15px;
         display: grid;
         grid-template-rows: min-content;

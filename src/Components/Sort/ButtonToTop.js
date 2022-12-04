@@ -58,7 +58,8 @@ const ButtonToTop = ( {changelang} ) => {
                 <motion.button id= "totop" onClick= {scrollToTop} {...totopVariants}
                     title= {changelang ? "Go to top" : "Πάνω"}
                     onMouseOver= {() => setOver(true)} onMouseOut= {() => setOver(false)} 
-                    style= {{backgroundColor: (over? 'rgb(13, 13, 90)' : 'lightblue'), transition: 'all 0.5s ease'}} >
+                    style= {{backgroundColor: (over? 'rgb(100, 23, 41)' : 'rgb(216, 172, 151)'), 
+                        transition: 'all 0.5s ease'}} >
                     <img src= {over? WhiteArrow : Arrow} alt= "To Top Icon" style= {{width: '32px', height: '32px'}} />
                 </motion.button>
             </motion.div>}

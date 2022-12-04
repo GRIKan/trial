@@ -77,7 +77,7 @@ const Header = ( {changelang, setChangelang, setInstructions, comments, setDispC
                     </button>
                     <button className= "buttonheader" id= "bdone" onClick= {done} 
                         data-isenabled= {enable} disabled= {!enable} 
-                        style= {{'--subheaderColor': enable ? 'lightblue' : 'rgba(216, 227, 233, 1)'}} >
+                        style= {{'--subheaderColor': enable ? 'rgb(216, 172, 151)' : 'rgba(228, 210, 202, 1)'}} >
                         <span className= "buttonicons">
                         <img src= {Ok} alt= "Ok Icon" style= {{width: '18px', height: '18px'}} />
                         </span> 
@@ -86,7 +86,7 @@ const Header = ( {changelang, setChangelang, setInstructions, comments, setDispC
                 </div>
                 <div className= "headeright">
                     <span id= "language" onClick= {changeLanguage} lang= {changelang ? "greek" : "english"}
-                        title= "Change Language">
+                        title= "Change Language" >
                         {changelang ? 
                             <img src= {Greek} alt= "Greek Flag Icon" lang= "greek"
                                 style= {{width: '20px', height: '16px'}} /> 

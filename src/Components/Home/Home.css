@@ -1,0 +1,410 @@
+.home {
+    height: 100%;
+    padding: 15px 40px 15px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-color: red; */
+    background-color: white;
+    background-image: url('../../Images/corkboard.png');
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+/* @media only screen and (max-width: 850px) {
+        
+    .home {
+        padding: 15px 30px 15px 30px;
+    }
+
+} */
+
+@media only screen and (max-width: 600px) {
+
+    .home {
+        padding: 5px 20px 5px 20px;
+    }
+
+}
+
+/* VARIABLES */
+
+:root {
+    --optionColor: rgb(255, 255, 0);
+    --buttonColor: rgb(0, 255, 0);
+    /* --subheaderColor: lightblue;
+    --backgroundColor: rgb(216, 227, 233);
+    --backgroundRGBColor: 216, 227, 233;
+    --categoryColor: rgb(255, 255, 104);
+    --cardColor: rgb(255, 255, 138);
+    --droppableCategory: rgb(253, 253, 153);
+    --darkfontColor: white;
+    --lightfontColor: black;
+    --errorColor: red;
+    --borderRadiusS: 1vh;
+    --borderRadiusL: 2vh; */
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/*HEADER CSS*/
+
+    #language > img{
+        position: absolute;
+        width: 30px;
+        height: 20px;
+        top: 5px;
+        right: 5px;
+        box-shadow: 0 0 5px black;
+        cursor: pointer;
+    }
+
+    .header {
+        width: calc(100%);
+        height: 120px;
+        font-size: 1.2em;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-content: flex-start;
+        border-bottom: 1px solid black;
+    }
+
+    #logo {
+        height: 100%;
+        padding-left: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    #logo > img {
+        width: 100px;
+        height: 100px;
+        cursor: pointer;
+    }
+
+    .headeroptions {
+        display: flex;
+        justify-self: center;
+    }
+
+    .buttonheader {
+        display: flex;
+        justify-self: flex-end;
+    }
+
+    .smallpostit {
+        margin-left: 20px;
+        margin-right: 20px;
+        display: grid;
+        /* background-color: var(--optionColor);
+        border-radius: 1vh;
+        box-shadow: 0 0 10px black; */
+    }
+
+    .smallpostit > img {
+        width: 120px;
+        height: 110px;
+        grid-area: 1/1;
+        box-shadow: 0 0 10px black;
+    }
+
+    .smalltext {
+        /* width: 110px;
+        height: 90px;
+        padding-right: 10px;
+        padding-left: 10px; */
+        grid-area: 1/1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* background-color: var(--optionColor);
+        border: 1px;
+        border-style: none;
+        border-radius: 1vh 1vh 0 0;
+        border-color: black;
+        box-shadow: 0 0 5px black; */
+        cursor: pointer;
+    }
+
+    #signupin {
+        font-weight: bold;
+        /* background-color: var(--buttonColor); */
+    }
+
+    /* .arrow {
+        width: 0;
+        height: 0;
+        grid-area: 2/1;
+        border-left: 55px solid transparent;
+        border-right: 55px solid transparent;
+        border-top: 50px solid var(--optionColor);
+    } */
+
+    /* #signupin > .arrow{
+        --optionColor: var(--buttonColor);
+    } */
+
+    .menu {
+        display: none;
+    }
+
+    @media only screen and (max-width: 850px) {
+
+        .header {
+            height: 80px;
+            font-size: 1em;
+        }
+
+        #logo > img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .smallpostit {
+            margin-right: 5px;
+            margin-left: 5px;
+        }
+
+        .smallpostit > img {
+            width: 100px;
+            height: 70px;
+        }
+
+        /* .smalltext {
+            width: 100px;
+            height: 55px;
+        } */
+
+        /* .arrow {
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-top: 20px solid var(--optionColor);
+        } */
+    
+    }
+    
+    @media only screen and (max-width: 600px) {
+
+        .header {
+            height: 70px;
+            align-content: center;
+            font-size: 1em;
+        }
+
+        #logo {
+            grid-area: 1/2;
+            justify-self: center;
+        }
+
+        #logo > img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .smallpostit {
+            display: none;
+        }
+
+        .menu {
+            width: 60px;
+            height: 50px;
+            padding: 5px 10px 5px 10px;
+            grid-area: 1/1;
+            justify-self: flex-start;
+            display:flex;
+            background-color: var(--optionColor);
+            border-radius: 1vh;
+            cursor: pointer;
+            box-shadow: 0 0 5px black;
+        }
+
+        .sidemenu {
+            position: absolute;
+            width: calc(100% - 40px);
+            height: calc(100% - 70px);
+            top: 75px;
+            /* left: 15px; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url('../../Images/corkboard.png');
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+        .sidemenu > img {
+            width: 20px;
+            height: 20px;
+            margin: 10px 10px 0 10px;
+            align-self: flex-end;
+            cursor: pointer;
+        }
+
+        .smallpostitright {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: grid;
+        }
+
+        .smallpostitright > img {
+            width: 100px;
+            height: 100px;
+            grid-area: 1/1;
+            box-shadow: 0 0 5px black;
+        }
+
+        .smalltextright {
+            grid-area: 1/1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #connect {
+            margin: 20px;
+        }
+
+        #connect > .smalltextright {
+            font-weight: bold;
+        }
+
+        .headeroptionsright {
+            width: 100%;
+            height: calc(100% - 170px);
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+    
+    }
+
+/* BOARD CSS */
+
+    .board {
+        width: 100%;
+        height: calc(100% - 130px);
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+    }
+
+    .mediumpostit {
+        height: fit-content;
+        min-height: 80%;
+        margin: 15px;
+        text-align: center;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        font-size: x-large;
+        background-image: url('../../Images/paper.jpg');
+        background-attachment: fixed;
+        background-size: 100% 100%;
+        box-shadow: 0 0 20px black;
+        cursor: pointer;
+    }
+
+    .mediumpostit > img {
+        width: 40px;
+        height: 40px;
+        grid-area: 1/1;
+        align-self: flex-start;
+        justify-self: center;
+    }
+
+    .mediumpostit > div {
+        max-width: calc(100% - 40px);
+        max-height: calc(100% - 65px);
+        margin: 45px 20px 20px 20px;
+        grid-area: 1/1;
+        display: flex;
+        align-items: start;
+        overflow-y: auto;
+        word-break: break-word;
+    }
+
+    #whatis {
+        grid-row: 1 / 7;
+        grid-column: 1 / 4;
+    }
+    
+    #whatbenefits {
+        grid-row: 4 / 11;
+        grid-column: 4 / 7;
+    }
+    
+    #whichtype {
+        grid-row: 3 / 9;
+        grid-column: 8 / 11;
+    }
+
+    @media only screen and (max-width: 850px) {
+
+        .board {
+            height: calc(100% - 85px);
+        }
+
+        .mediumpostit {
+            margin: 15px;
+            font-size: large;
+        }
+
+        .mediumpostit > img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .mediumpostit > div {
+            max-width: calc(100% - 20px);
+            max-height: calc(100% - 30px);
+            margin: 20px 10px 10px 10px;
+        }
+
+        #whatis {
+            grid-row: 1 / 7;
+            grid-column: 1 / 4;
+        }
+        
+        #whatbenefits {
+            grid-row: 4 / 11;
+            grid-column: 4 / 7;
+        }
+        
+        #whichtype {
+            grid-row: 3 / 9;
+            grid-column: 8 / 11;
+        }
+    
+    }
+    
+    @media only screen and (max-width: 600px) {
+        
+        .board {
+            height: calc(100% - 70px);
+        }
+
+        #whatis {
+            grid-row: 1 / 5;
+            grid-column: 1 / 5;
+        }
+        
+        #whatbenefits {
+            grid-row: 7 / 11;
+            grid-column: 2 / 7;
+        }
+        
+        #whichtype {
+            grid-row: 2 / 7;
+            grid-column: 6 / 11;
+        }
+    }
+
+/* FOOTER CSS*/
+
+    .footer {
+        width: 100%;
+        height: 30px;
+        /* align-self: flex-end; */
+        border-top: 1px solid black;
+    }
