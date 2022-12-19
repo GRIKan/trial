@@ -42,7 +42,7 @@ const Create = ( {setCreate, changelang, add, setAdd, drop, out,
             if (inputText === "") {
                 // e.target.style.borderColor= 'black';
                 setRed(false);
-            }
+            };
         };
 
         const pressedKey = (e) => {

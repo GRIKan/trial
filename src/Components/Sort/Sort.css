@@ -80,7 +80,7 @@
 
 /* HEADER CSS */
 
-    .header {
+    .header.s {
         position: relative;
         height: 75px;
     }
@@ -1468,7 +1468,7 @@
         border-radius: var(--borderRadiusS);
     } */
 
-    .popup {
+    .popup.s {
         position: absolute;
         width: 160px;
         height: 30px;

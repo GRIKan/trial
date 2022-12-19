@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import ChangeLanguage from './ChangeLanguage';
 import Tasks from './Tasks';
-import Header from './Header';
+import Header from './HeaderS';
 import Instructions from './Instructions';
 import Comments from './Comments';
 import Sure from './Sure';
 import CardList from './CardList';
 import Create from './Create';
-import PopUp from './PopUp';
+import PopUp from './PopUpS';
 import ButtonToTop from './ButtonToTop';
 import Thankyou from './Thankyou';
 import './Sort.css'
@@ -68,7 +68,7 @@ const Sort = () => {
     useEffect(() => {
         window.addEventListener('load', ChangeLanguage);
         // window.localStorage.clear();
-    })
+    });
 
     const [changelang, setChangelang] = useState(false);
 

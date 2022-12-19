@@ -4,20 +4,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* background-color: red; */
     background-color: white;
     background-image: url('../../Images/corkboard.png');
     background-attachment: fixed;
     background-size: 100% 100%;
+    font-family: Segoe , Tahoma, Geneva, Verdana, sans-serif;
 }
-
-/* @media only screen and (max-width: 850px) {
-        
-    .home {
-        padding: 15px 30px 15px 30px;
-    }
-
-} */
 
 @media only screen and (max-width: 600px) {
 
@@ -29,27 +21,38 @@
 
 /* VARIABLES */
 
-:root {
-    --optionColor: rgb(255, 255, 0);
-    --buttonColor: rgb(0, 255, 0);
-    /* --subheaderColor: lightblue;
-    --backgroundColor: rgb(216, 227, 233);
-    --backgroundRGBColor: 216, 227, 233;
-    --categoryColor: rgb(255, 255, 104);
-    --cardColor: rgb(255, 255, 138);
-    --droppableCategory: rgb(253, 253, 153);
-    --darkfontColor: white;
-    --lightfontColor: black;
-    --errorColor: red;
-    --borderRadiusS: 1vh;
-    --borderRadiusL: 2vh; */
-}
+    :root {
+        --optionColor: rgb(255, 255, 0);
+        --buttonColor: rgb(0, 255, 0);
+        --loginColor: rgb(0, 155, 0);
+        --linkColor: rgb(0, 0, 255);
+        --linkhoverColor: rgb(0, 0, 155);
+        --forgotColor: rgb(155, 0, 0);
+        --darkfontColor: white;
+        --lightfontColor: black;
+        /* --subheaderColor: lightblue;
+        --backgroundColor: rgb(216, 227, 233);
+        --backgroundRGBColor: 216, 227, 233;
+        --categoryColor: rgb(255, 255, 104);
+        --cardColor: rgb(255, 255, 138);
+        --droppableCategory: rgb(253, 253, 153);
+        --darkfontColor: white;
+        --lightfontColor: black;
+        --errorColor: red;
+        --borderRadiusS: 1vh;
+        --borderRadiusL: 2vh; */
+    }
+
+    @font-face {
+        font-family: Segoe;
+        src: url(./segoepr.ttf);
+    }
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 /*HEADER CSS*/
 
-    #language > img{
+    #languageh > img{
         position: absolute;
         width: 30px;
         height: 20px;
@@ -59,7 +62,7 @@
         cursor: pointer;
     }
 
-    .header {
+    .header.h {
         width: calc(100%);
         height: 120px;
         font-size: 1.2em;
@@ -76,7 +79,12 @@
         align-items: center;
     }
 
-    #logo > img {
+    #logo > a {
+        display: flex;
+        align-items: center;
+    }
+
+    #icon {
         width: 100px;
         height: 100px;
         cursor: pointer;
@@ -87,7 +95,7 @@
         justify-self: center;
     }
 
-    .buttonheader {
+    .buttonheaderh {
         display: flex;
         justify-self: flex-end;
     }
@@ -96,96 +104,66 @@
         margin-left: 20px;
         margin-right: 20px;
         display: grid;
-        /* background-color: var(--optionColor);
-        border-radius: 1vh;
-        box-shadow: 0 0 10px black; */
     }
 
     .smallpostit > img {
-        width: 120px;
+        width: 130px;
         height: 110px;
         grid-area: 1/1;
-        box-shadow: 0 0 10px black;
     }
 
     .smalltext {
-        /* width: 110px;
-        height: 90px;
-        padding-right: 10px;
-        padding-left: 10px; */
         grid-area: 1/1;
         display: flex;
         align-items: center;
         justify-content: center;
-        /* background-color: var(--optionColor);
-        border: 1px;
-        border-style: none;
-        border-radius: 1vh 1vh 0 0;
-        border-color: black;
-        box-shadow: 0 0 5px black; */
+        color: var(--lightfontColor);
         cursor: pointer;
     }
 
-    #signupin {
-        font-weight: bold;
-        /* background-color: var(--buttonColor); */
+    a {
+        text-decoration: none;
     }
-
-    /* .arrow {
-        width: 0;
-        height: 0;
-        grid-area: 2/1;
-        border-left: 55px solid transparent;
-        border-right: 55px solid transparent;
-        border-top: 50px solid var(--optionColor);
-    } */
-
-    /* #signupin > .arrow{
-        --optionColor: var(--buttonColor);
-    } */
 
     .menu {
         display: none;
     }
 
+    .sidemenu {
+        display: none;
+    }
+
     @media only screen and (max-width: 850px) {
 
-        .header {
+        .header.h {
             height: 80px;
             font-size: 1em;
         }
 
-        #logo > img {
+        #logo {
+            padding-left: 2px;
+        }
+
+        #icon {
             width: 60px;
             height: 60px;
         }
 
         .smallpostit {
-            margin-right: 5px;
-            margin-left: 5px;
+            margin-right: 2px;
+            margin-left: 2px;
         }
 
         .smallpostit > img {
-            width: 100px;
+            width: 110px;
             height: 70px;
         }
 
-        /* .smalltext {
-            width: 100px;
-            height: 55px;
-        } */
-
-        /* .arrow {
-            border-left: 50px solid transparent;
-            border-right: 50px solid transparent;
-            border-top: 20px solid var(--optionColor);
-        } */
-    
     }
     
     @media only screen and (max-width: 600px) {
 
-        .header {
+        .header.h {
             height: 70px;
             align-content: center;
             font-size: 1em;
@@ -193,15 +171,15 @@
 
         #logo {
             grid-area: 1/2;
-            justify-self: center;
+            justify-content: center;
         }
 
-        #logo > img {
+        #icon {
             width: 50px;
             height: 50px;
         }
 
-        .smallpostit {
+        .headeroptions, .buttonheaderh {
             display: none;
         }
 
@@ -223,13 +201,13 @@
             width: calc(100% - 40px);
             height: calc(100% - 70px);
             top: 75px;
-            /* left: 15px; */
             display: flex;
             flex-direction: column;
             align-items: center;
             background-image: url('../../Images/corkboard.png');
             background-attachment: fixed;
             background-size: 100% 100%;
+            z-index: 2;
         }
 
         .sidemenu > img {
@@ -244,17 +222,18 @@
             margin-top: 10px;
             margin-bottom: 10px;
             display: grid;
+            cursor: pointer;
         }
 
         .smallpostitright > img {
-            width: 100px;
+            width: 110px;
             height: 100px;
             grid-area: 1/1;
-            box-shadow: 0 0 5px black;
         }
 
         .smalltextright {
             grid-area: 1/1;
+            color: var(--lightfontColor);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -305,6 +284,11 @@
         cursor: pointer;
     }
 
+    .mediumpostit[data-isopen= "true"] {
+        height: 93%;
+        grid-template-rows: min-content;
+    }
+
     .mediumpostit > img {
         width: 40px;
         height: 40px;
@@ -313,15 +297,20 @@
         justify-self: center;
     }
 
-    .mediumpostit > div {
+    .notetext {
         max-width: calc(100% - 40px);
         max-height: calc(100% - 65px);
         margin: 45px 20px 20px 20px;
         grid-area: 1/1;
+        justify-self: center;
         display: flex;
-        align-items: start;
+        align-items: flex-start;
         overflow-y: auto;
         word-break: break-word;
+    }
+    
+    .notetext[data-isopen= "true"] {
+        font-weight: bold;
     }
 
     #whatis {
@@ -337,6 +326,35 @@
     #whichtype {
         grid-row: 3 / 9;
         grid-column: 8 / 11;
+    }
+
+    #whatis[data-isopen= "true"] {
+        z-index: 2;
+        grid-row: 1 / 11;
+        grid-column: 1 / 11;
+    }
+
+    #whatbenefits[data-isopen= "true"] {
+        z-index: 2;
+        grid-row: 1 / 11;
+        grid-column: 1 / 11;
+    }
+
+    #whichtype[data-isopen= "true"] {
+        z-index: 2;
+        grid-row: 1 / 11;
+        grid-column: 1 / 11;
+    }
+
+    .note {
+        width: calc(100% - 20px);
+        height: calc(100% - 10px);
+        margin: 0 10px 10px 10px;
+        padding: 0 5px 0 5px;
+        font-size: large;
+        text-align: start;
+        overflow-y: auto;
+        word-break: break-word;
     }
 
     @media only screen and (max-width: 850px) {
@@ -355,10 +373,10 @@
             height: 20px;
         }
 
-        .mediumpostit > div {
+        .notetext {
             max-width: calc(100% - 20px);
-            max-height: calc(100% - 30px);
-            margin: 20px 10px 10px 10px;
+            max-height: calc(100% - 35px);
+            margin: 25px 10px 10px 10px;
         }
 
         #whatis {
@@ -367,12 +385,12 @@
         }
         
         #whatbenefits {
-            grid-row: 4 / 11;
+            grid-row: 3 / 10;
             grid-column: 4 / 7;
         }
         
         #whichtype {
-            grid-row: 3 / 9;
+            grid-row: 2 / 8;
             grid-column: 8 / 11;
         }
     
@@ -400,11 +418,489 @@
         }
     }
 
-/* FOOTER CSS*/
+/* NOTES CSS*/
 
-    .footer {
+    .notes {
         width: 100%;
+        height: calc(100% - 130px);
+        font-size: large;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        background-image: url('../../Images/paper.jpg');
+        background-attachment: fixed;
+        background-size: 100% 100%;
+        box-shadow: 0 0 20px black;
+    }
+
+    /* ABOUT */
+
+        .about {
+            width: 100%;
+            height: 100%;
+            padding: 0 20px 20px 20px;
+            display: grid;
+        }
+
+        .about > img {
+            width: 40px;
+            height: 40px;
+            grid-area: 1/1;
+            align-self: flex-start;
+            justify-self: center;
+        }
+
+        .abouttext {
+            width: 100%;
+            height: calc(100% - 40px);
+            margin: 40px 0 0 0;
+            padding: 0 5px 0 5px;
+            grid-area: 1/1;
+            overflow-y: auto;
+            word-break: break-word;
+        }
+
+        .abouttext > a {
+            color:var(--linkColor);
+        }
+
+        .abouttext > a:hover {
+            color: var(--linkhoverColor);
+            text-decoration: underline;
+        }
+
+        .attribution {
+            text-align: center;
+        }
+        
+        .attribution > a {
+            color:var(--linkColor);
+        }
+
+        .attribution > a:hover {
+            color: var(--linkhoverColor);
+            text-decoration: underline;
+        }
+
+    /* FEATURES */
+
+        .features {
+            width: 100%;
+            height: 100%;
+            padding: 0 20px 20px 20px;
+            display: grid;
+        }
+
+        .features > img {
+            width: 40px;
+            height: 40px;
+            grid-area: 1/1;
+            align-self: flex-start;
+            justify-self: center;
+        }
+
+        .featurestext {
+            width: 100%;
+            height: calc(100% - 40px);
+            margin: 40px 0 0 0;
+            padding: 0 5px 0 5px;
+            grid-area: 1/1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            word-break: break-word;
+        }
+
+        .types {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 10px;
+            justify-items: center;
+        }
+
+    /* LOGIN CSS */
+
+        .connect {
+            width: 100%;
+            height: 100%;
+            padding: 0 20px 20px 20px;
+            display: grid;
+        }
+
+        .connect > img {
+            width: 40px;
+            height: 40px;
+            grid-area: 1/1;
+            align-self: flex-start;
+            justify-self: center;
+            z-index: 1;
+        }
+
+        .connectcont {
+            width: 100%;
+            height: calc(100% - 40px);
+            margin: 40px 0 0 0;
+            padding: 0 5px 0 5px;
+            grid-area: 1/1;
+            display: grid;
+            grid-template-columns: 75% 25%;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            word-break: break-word;
+        }
+
+        .connectformside {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            justify-items: center;
+            overflow-y: auto;
+            word-break: break-word;
+        }
+
+        .connectforms {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .connectrow {
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: 45% 55%;
+            align-items: center;
+        }
+
+        .connectlabel {
+            padding-right: 10px;
+            grid-area: 1/1;
+            text-align: end;
+        }
+
+        .connectform {
+            width: 240px;
+            height: 50px;
+            padding-right: 10px;
+            padding-left: 10px;
+            grid-area: 1/2;
+            font-size: 0.9em;
+            background-color: transparent;
+            border: 1px solid black;
+            border-radius: 1vh;
+        }
+
+        .passwordform {
+            width: 240px;
+            height: 50px;
+            grid-area: 1/2;
+            display: flex;
+            align-items: center;
+            border-style: solid;
+            border-radius: 1vh;
+        }
+
+        .passwordform > input {
+            width: calc(100% - 40px);
+            margin: 0;
+            border: none;
+            outline: none;
+        }
+
+        .passwordform > img {
+            width: 40px;
+            height: 48px;
+            padding: 15px 10px 15px 10px;
+            cursor: pointer;
+        }
+        
+        #connectbutton {
+            width: 100px;
+            height: 50px;
+            align-self: center;
+            font-size: 0.9em;
+            font-weight: 550;
+            color: var(--darkfontColor);
+            background-color: var(--loginColor);
+            border: none;
+            border-radius: 1vh;
+            box-shadow: 0 0 10px black;
+            cursor: pointer;
+        }
+
+        #connectbutton:hover {
+            border: 1px solid black;
+        }
+
+        #tolink > a {
+            color:var(--linkColor);
+        }
+
+        #tolink > a:hover {
+            color: var(--linkhoverColor);
+            text-decoration: underline;
+        }
+
+        .changeroute {
+            grid-area: 1/2;
+            display: flex;
+            justify-content: center;
+        }
+
+    /* SIGNUP CSS*/
+
+        .connectrow.s {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        #connectbutton.s {
+            background-color: var(--linkhoverColor);
+        }
+
+        #pswcheck {
+            width: 260px;
+            grid-area: 2/2;
+            font-size: 0.65em;
+            color: red;
+        }
+
+    @media only screen and (max-width: 850px) {
+
+        .notes {
+            height: calc(100% - 85px);
+        }
+
+        .about > img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .abouttext {
+            height: calc(100% - 20px);
+            margin: 20px 0 0 0;
+        }
+        
+        .features > img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .featurestext {
+            height: calc(100% - 20px);
+            margin: 20px 0 0 0;
+        }
+
+        .connect > img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .connectcont {
+            height: calc(100% - 20px);
+            margin: 20px 0 0 0;
+        }
+
+        .connectrow {
+            grid-template-columns: 30% 70%;
+        }
+
+        .connectformside {
+            padding: 10px 0 10px 0;
+            grid-row-gap: 10px;
+        }
+    
+    }
+    
+    @media only screen and (max-width: 600px) {
+        
+        .notes {
+            height: calc(100% - 75px);
+        }
+
+        .connectcont {
+            grid-template-columns: 1fr;
+            grid-template-rows: calc(100% - 80px) 80px;
+        }
+
+        .connectformside {
+            grid-area: 1/1;
+        }
+
+        .connectrow {
+            grid-template-columns: none;
+            justify-content: center;
+        }
+
+        .connectlabel {
+            padding: 0;
+            text-align: center;
+        }
+
+        .connectform {
+            grid-area: 2/1;
+        }
+
+        .passwordform {
+            grid-area: 2/1;
+        }
+
+        .changeroute {
+            grid-area: 2/1;
+        }
+
+        .connectcont.s {
+            height: calc(100% - 7px);
+            margin: 7px 0 0 0;
+            grid-template-columns: 1fr;
+            grid-template-rows: 80px calc(100% - 80px);
+        }
+
+        .connectformside.s {
+            grid-area: 2/1;
+        }
+
+        #pswcheck {
+            grid-area: 3/1;
+        }
+
+        .changeroute.s {
+            grid-area: 1/1;
+        }
+
+    }
+
+/* FORGOT CSS */
+
+    .forgot {
+        width: 100%;
+        height: calc(100% - 130px);
+        display: grid;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .forgotcontainer {
+        width: 500px;
+        height: 250px;
+        padding: 0 20px 20px 20px;
+        font-size: large;
+        display: grid;
+        background-image: url('../../Images/paper.jpg');
+        background-attachment: fixed;
+        background-size: 100% 100%;
+        box-shadow: 0 0 20px black;
+    }
+
+    .forgotcontainer > img {
+        width: 40px;
+        height: 40px;
+        grid-area: 1/1;
+        align-self: flex-start;
+        justify-self: center;
+    }
+
+    .forgotcont {
+        height: calc(100% - 40px);
+        margin: 40px 0 0 0;
+        grid-area: 1/1;
+        display: grid;
+        grid-template-rows: min-content;
+        justify-items: center;
+        overflow-y: auto;
+        word-break: break-word;
+    }
+
+    .connectrow.f {
+        grid-template-columns: 24% 76%;
+    }
+
+    #send {
+        width: 200px;
+        height: 50px;
+        align-self: center;
+        font-size: 0.9em;
+        font-weight: 550;
+        color: var(--darkfontColor);
+        background-color: var(--forgotColor);
+        border: none;
+        border-radius: 1vh;
+        box-shadow: 0 0 10px black;
+        cursor: pointer;
+    }
+
+    #send:hover {
+        border: 1px solid black;
+    }
+
+    @media only screen and (max-width: 850px) {
+
+        .forgot {
+            height: calc(100% - 85px);
+        }
+
+        .forgotcontainer > img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .forgotcont {
+            height: calc(100% - 20px);
+            margin: 20px 0 0 0;
+        }
+
+    }
+
+    @media only screen and (max-width: 600px) {
+
+        .forgot {
+            height: calc(100% - 70px);
+        }
+
+        .forgotcontainer {
+            width: 100%;
+        }
+
+        .connectrow.f {
+            grid-template-columns: none;
+        }
+
+    }
+
+    @media only screen and (max-height: 400px) {
+
+        .forgotcontainer {
+            height: 100%;
+        }
+        
+    }
+
+/* POPUP CSS */
+
+    .popup.h {
+        position: absolute;
+        width: 160px;
         height: 30px;
-        /* align-self: flex-end; */
-        border-top: 1px solid black;
+        top: calc(100% - 40px - 1vh);
+        left: calc(100% - 160px - 3vh);
+        z-index: 1;
+        color: var(--darkfontColor);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 1vh;
+    }
+
+    .popup.h[data-pop= "1"] {
+        background-color: var(--linkhoverColor);
+    }
+    
+    .popup.h[data-pop= "2"] {
+        background-color: var(--forgotColor);
     }

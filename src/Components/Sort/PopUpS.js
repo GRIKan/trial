@@ -12,7 +12,7 @@ const popupVariants= {
     exit: {
         opacity: 0,
     }
-}
+};
 
 const PopUp = ( {pop, setPop, changelang} ) => {
     const renderPop = () => {
@@ -31,11 +31,11 @@ const PopUp = ( {pop, setPop, changelang} ) => {
     useEffect(() => {
         setTimeout(function() {
             setPop(false);
-        }, 1500);
+        }, 1000);
     }, [setPop]);
 
     return (
-        <motion.div className= "popup" {...popupVariants} >
+        <motion.div className= "popup s" {...popupVariants} >
             {renderPop()}
         </motion.div>
     );

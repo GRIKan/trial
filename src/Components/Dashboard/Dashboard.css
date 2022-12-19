@@ -1,0 +1,390 @@
+.dashboard {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    background-color: var(--subheaderColor);
+}
+
+/* @media only screen and (max-width: 600px) {
+
+    .dashboard {
+        padding: 5px 20px 5px 20px;
+    }
+
+} */
+
+/* VARIABLES */
+
+    :root {
+        --headerColor: rgb(100, 23, 41);
+        --subheaderColor: rgb(216, 172, 151);
+        --backgroundColor: rgb(228, 210, 202);
+        --backgroundRGBColor: 228, 210, 202;
+        --categoryColor: rgb(255, 255, 104);
+        --cardColor: rgb(255, 255, 138);
+        --droppableCategory: rgb(253, 253, 153);
+        --darkfontColor: white;
+        --lightfontColor: black;
+        --errorColor: red;
+    }
+
+/*HEADER CSS*/
+
+    #languaged > img{
+        position: absolute;
+        width: 30px;
+        height: 20px;
+        top: 5px;
+        right: 5px;
+        box-shadow: 0 0 5px black;
+        cursor: pointer;
+    }
+
+    .header.d {
+        width: calc(100%);
+        height: 70px;
+        padding: 10px 40px 10px 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        background-color: var(--backgroundColor);
+        border-bottom: 1px solid var(--headerColor);
+        box-shadow: 0 0 20px var(--headerColor);
+        z-index: 1;
+    }
+
+    #logod {
+        height: 50px;
+    }
+
+    #icond {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+    }
+
+    .createnewcont {
+        grid-area: 1/2;
+        display: flex;
+        align-items: center;
+    }
+
+    .createnew {
+        height: 50px;
+        padding: 0 20px 0 20px;
+        color: var(--darkfontColor);
+        font-size: 1.1em;
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+        background-color: var(--headerColor);
+        border-radius: 1vh;
+        cursor: pointer;
+    }
+
+    .createnew > img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .connecteduser {
+        max-width: 100%;
+        height: 50px;
+        padding-right: 10px;
+        grid-area: 1/3;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        column-gap: 20px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .conuser {
+        max-width: 100%;
+        height: 40px;
+        padding: 0 10px 0 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        column-gap: 5px;
+        border-left: 1px solid var(--headerColor);
+        border-radius: 0 1vh 1vh 0;
+        box-shadow: 0 0 5px var(--headerColor);
+    }
+
+    .conuser:hover {
+        background-color: var(--subheaderColor);
+        cursor: pointer;
+    }
+
+    .conuser > img {
+        width: 20px;
+        height: 20px;
+    }
+
+    #conusername {
+        width: 100%;
+        font-size: 1.2em;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .useroptions {
+        position: absolute;
+        top: 80px;
+        display: grid;
+        background-color: var(--subheaderColor);
+        border: 1px solid var(--headerColor);
+        border-radius: 1vh;
+    }
+
+    .useroption:hover {
+        color: var(--darkfontColor);
+        background-color: var(--headerColor);
+        cursor: pointer;
+    }
+
+    #usersettings {
+        padding: 10px 20px 5px 20px;
+        border-radius: 0.8vh 0.8vh 0 0;
+    }
+
+    #logout {
+        padding: 5px 20px 10px 20px;
+        border-radius: 0 0 0.8vh 0.8vh;
+    }
+
+    @media only screen and (max-width: 600px) {
+
+        #createnewtext {
+            display: none;
+        }
+
+    }
+
+/* CONTAINER CSS */
+
+    .containerd {
+        width: calc(100% - 80px);
+        height: calc(100% - 40px);
+        margin: 20px 40px 20px 40px;
+        background-color: var(--backgroundColor);
+        border-radius: 1vh;
+        overflow-y: auto;
+    }
+
+    /* SETTINGS*/
+
+        .settings {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .connectbuttond {
+            width: 150px;
+            height: 50px;
+            align-self: center;
+            font-size: 0.9em;
+            font-weight: 550;
+            color: var(--lightfontColor);
+            background-color: var(--subheaderColor);
+            border: none;
+            border-radius: 1vh;
+            box-shadow: 0 0 10px var(--headerColor);
+            cursor: pointer;
+        }
+
+        #changepasdisp {
+            color: var(--darkfontColor);
+            background-color: var(--headerColor);
+        }
+        
+        #delaccount {
+            width: 200px;
+            height: 50px;
+            color: var(--darkfontColor);
+            background-color: var(--errorColor);
+            word-break: break-all;
+        }
+
+    /* EXPERIMENTS CSS */
+
+        .experiments {
+            width: 100%;
+            height: 100%;
+            overflow-x: auto;
+        }
+
+        .exptable {
+            width: 100%;
+            height: 50px;
+            display: grid;
+            grid-template-columns: 30% 20% 20% 15% 15%;
+        }
+
+        .exptable.title {
+            color: var(--darkfontColor);
+            font-weight: bold;
+            background-color: var(--headerColor);
+        }
+
+        .exptable.title > div {
+            color: var(--darkfontColor);
+            font-weight: bold;
+            background-color: var(--headerColor);
+            border-left: 1px solid white;
+        }
+
+        .exptable.title > div:first-child {
+            border: none;
+            border-radius: 1vh 0 0 0;
+        }
+        
+        .exptable.title > div:last-child {
+            border-radius: 0 1vh 0 0;
+        }
+
+        .exptable > div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--headerColor);
+        }
+
+        #expname {
+            width: 100%;
+            padding: 0 5px 0 5px;
+            cursor: pointer;
+        }
+
+        #expname > a {
+            width: 100%;
+        }
+
+        #nametext {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .iconhov {
+            width: 50px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1vh;
+            cursor: pointer;
+        }
+
+        .iconhov:hover {
+            background-color: var(--subheaderColor);
+        }
+
+        .iconhov > img {
+            width: 20px;
+            height: 20px;
+        }
+
+    @media only screen and (max-width: 850px) {
+
+        .connectrow.d {
+            grid-template-columns: none;
+            justify-content: center;
+        }
+
+        .connectlabel.d {
+            padding: 0;
+            text-align: center;
+        }
+
+        .connectform.d {
+            grid-area: 2/1;
+        }
+
+        .passwordform.d {
+            grid-area: 2/1;
+        }
+    
+    }
+
+    @media only screen and (max-width: 600px) {
+
+        .settings {
+            grid-template-columns: 1fr;
+        }
+
+        .containerd {
+            width: calc(100% - 40px);
+            margin: 20px 20px 20px 20px;
+        }
+
+        .exptable {
+            grid-template-columns: 200px 150px 150px 100px 100px;
+        }
+
+        .connectformside.d {
+            overflow: initial;
+        }
+
+        .connectformside.p {
+            grid-area: 2/1;
+            overflow: initial;
+        }
+
+    }
+
+/* POPUP CSS*/
+
+    .popup.d {
+        position: absolute;
+        width: 160px;
+        height: 30px;
+        top: calc(100% - 40px - 1vh);
+        left: calc(100% - 160px - 3vh);
+        z-index: 1;
+        color: var(--lightfontColor);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--categoryColor);
+        border: 2px solid black;
+        border-radius: 1vh;
+    }
+
+/* CONTAINER SCROLLBAR CSS */
+
+    #containerdscrollbar::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        border-radius: 1vh;
+    }
+
+    #containerdscrollbar::-webkit-scrollbar-track {
+        background-color: var(--backgroundColor);
+        border-radius: 1vh;
+        box-shadow: inset 0 0 5px var(--headerColor);
+    }
+
+    #containerdscrollbar::-webkit-scrollbar-thumb {
+        background-color: var(--subheaderColor);
+        border: 1px solid var(--headerColor);
+        border-radius: var(--borderRadiusS);
+        box-shadow: inset 0 0 2px black;
+    }
+
+    #containerdscrollbar::-webkit-scrollbar-thumb:hover {
+        background: var(--headerColor);
+    }
+
+    #containerdscrollbar::-webkit-scrollbar-corner {
+        background: var(--backgroundColor);
+    }

@@ -1,0 +1,40 @@
+.createdit{
+    width: calc(100% - 80px);
+    height: calc(100% - 40px);
+    margin: 20px 40px 20px 40px;
+    background-color: red;
+}
+
+/* VARIABLES */
+
+    :root {
+        --headerColor: rgb(100, 23, 41);
+        --subheaderColor: rgb(216, 172, 151);
+        --backgroundColor: rgb(228, 210, 202);
+        --backgroundRGBColor: 228, 210, 202;
+        --categoryColor: rgb(255, 255, 104);
+        --cardColor: rgb(255, 255, 138);
+        --droppableCategory: rgb(253, 253, 153);
+        --darkfontColor: white;
+        --lightfontColor: black;
+        --errorColor: red;
+    }
+
+/* EXPLORE CSS */
+
+    .explore {
+        height: 50px;
+        display: flex;
+        column-gap: 10px;
+        background-color: var(--subheaderColor);
+    }
+
+    .explorebuttons {
+        width: 120px;
+        height: 100%;
+        color: var(--lightfontColor);
+        font-size: 1.1em;
+        display: flex;
+        background-color: var(--headerColor);
+        border-radius: 1vh;
+    }

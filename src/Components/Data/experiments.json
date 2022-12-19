@@ -1,0 +1,60 @@
+[
+    {
+        "exp_id": "1",
+        "name": "EXPhjbfgsufedhflskejflrjflsrigfjslrihgsilhdfclskndvlfdrfkderuh",
+        "datecreated": "2022-17-12T14:48:00",
+        "datemod": "2022-17-12T14:48:00",
+        "type": "open",
+        "datestart": "2022-17-12T14:48:00",
+        "datestop": "2022-17-12T14:48:00",
+        "instructions": "...",
+        "goodbye": "bye",
+        "cards": {
+            "card-1": { "id": 1, "name": "Apple"},
+            "card-2": { "id": 2, "name": "Carrot"},
+            "card-3": { "id": 3, "name": "Potato"}
+        },
+        "categories": {},
+        "unsorted": true,
+        "randomize": true,
+        "user_id": "1"
+    },
+    {
+        "exp_id": "2",
+        "name": "EXP2",
+        "datecreated": "2022-17-12T14:48:00",
+        "datemod": "2022-17-12T14:48:00",
+        "type": "open",
+        "datestart": "2022-17-12T14:48:00",
+        "datestop": "2022-17-12T14:48:00",
+        "instructions": "...",
+        "goodbye": "bye",
+        "cards": {
+            "card-3": { "id": "card-3", "name": "drgd"},
+            "card-4": { "id": "card-4", "name": "gdzrdr"}
+        },
+        "categories": {},
+        "unsorted": true,
+        "randomize": true,
+        "user_id": "1"
+    },
+    {
+        "exp_id": "3",
+        "name": "EXP3",
+        "datecreated": "2022-17-12T14:48:00",
+        "datemod": "2022-17-12T14:48:00",
+        "type": "open",
+        "datestart": "2022-17-12T14:48:00",
+        "datestop": "2022-17-12T14:48:00",
+        "instructions": "...",
+        "goodbye": "bye",
+        "cards": {
+            "card-3": { "id": "card-3", "name": "drgd"},
+            "card-4": { "id": "card-4", "name": "gdzrdr"}
+        },
+        "categories": {},
+        "unsorted": true,
+        "randomize": true,
+        "user_id": "2"
+    }
+]

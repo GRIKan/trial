@@ -63,7 +63,7 @@ const Header = ( {changelang, setChangelang, setInstructions, comments, setDispC
     };
 
     return ( 
-        <div className= "header">
+        <div className= "header s">
             <div className= "headercontainer">
                 <div className= "headerleft">
                     <span id= "title" title= "Αξιολόγηση1 Σελίδας Sort του Sort-it!">Αξιολόγηση1 Σελίδας Sort του Sort-it!</span>
