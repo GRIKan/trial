@@ -6,7 +6,7 @@ import Greek from '../../Images/greekflag.png';
 import UK from '../../Images/ukflag.png';
 import Info from '../../Images/info.png';
 import Bubble from '../../Images/bubble.png';
-import Plus from '../../Images/plus.png';
+import Plus from '../../Images/whiteplus.png';
 
 const Header = ( {changelang, setChangelang, setInstructions, comments, setDispComments, 
     setSure, setPop, setAdd, setCreate,

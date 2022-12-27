@@ -7,7 +7,7 @@ import Hide from '../../Images/hide.png';
 import Button from '../../Images/greenfull.png';
 import Connect from '../../Images/greenflip.png';
 
-const Login = ( {setAuth} ) => {
+const Login = ( {users, setUser} ) => {
     const [inputMail, setInputMail] = useState("");
     const [inputPass, setInputPass] = useState("");
     
@@ -20,7 +20,7 @@ const Login = ( {setAuth} ) => {
     const [flip, setFlip] = useState(false);
 
     useEffect(() => {
-        if (!(inputPass === "")) {
+        if (!(eye === true)) {
             const end= document.querySelector('#psw');
             var len = end.value.length;
             end.focus();
@@ -77,11 +77,16 @@ const Login = ( {setAuth} ) => {
     };
 
     const gotoProf = (e) => {
-        setAuth(true);
+        users.map(user => {
+            if ((user.mail === inputMail) && (user.password === inputPass)) {
+                console.log(user.user_id);
+                setUser(user.user_id);
+            };
+            return user.user_id;
+        });
         e.preventDefault();
-        window.location.pathname= "/dashboard";
     };
-
+    
     return (
         <div className= "connect">
             <img src= {PinGreen} alt= "Pin Icon" />

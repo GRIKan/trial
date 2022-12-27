@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Header from './HeaderH';
@@ -8,10 +8,11 @@ import Forgot from './Forgot';
 import PopUp from './PopUpH';
 import './Home.css';
 
-const Home = ( {auth, setAuth} ) => {
+const Home = ( {users, setUsers, user, setUser} ) => {
     const [pop, setPop] = useState(0);
 
-    if (auth) {
+    // console.log(user);
+    if (user !== '0') {
         return <Navigate to="/dashboard" replace />;
     };
 
@@ -22,8 +23,8 @@ const Home = ( {auth, setAuth} ) => {
                 <Route path= "/" element= {<Board />} />
                 <Route path= "/about" element= {<Notes />} />
                 <Route path= "/features" element= {<Notes />} />
-                <Route path= "/login" element= {<Notes setAuth= {setAuth} />} />
-                <Route path= "/signup" element= {<Notes setPop= {setPop} />} />
+                <Route path= "/login" element= {<Notes users= {users} setUsers= {setUsers} setUser= {setUser} />} />
+                <Route path= "/signup" element= {<Notes users= {users} setUsers= {setUsers} setPop= {setPop} />} />
                 <Route path= "/forgotpassword" element= {<Forgot setPop= {setPop} />} />
                 <Route path="*" element= {<Navigate to="/" />} />
             </Routes>

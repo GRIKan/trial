@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import '../Results/Results.css';
 import experiments from '../Data/experiments.json';
 import results from '../Data/results.json';
-import { createDomMotionComponent } from 'framer-motion';
 
 const Results = () => {
     const { id } = useParams();
@@ -19,7 +18,7 @@ const Results = () => {
         window.location.pathname= "/dashboard";
     };
 
-    console.log(exp);
+    // console.log(exp);
 
     const makecsv = () => {
         
@@ -30,6 +29,7 @@ const Results = () => {
             text= text + item.cat_name + ",";
             text= text + item.user_id;
             text= text + "\r\n";
+            return text;
         });
         // console.log(text);
     };
@@ -39,6 +39,7 @@ const Results = () => {
             text= text + item.comment + ",";
             text= text + item.user_id;
             text= text + "\r\n";
+            return text;
         });
         // console.log(text);
     };

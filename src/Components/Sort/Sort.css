@@ -221,7 +221,7 @@
         position: relative;
         /* top: 7.7vh;
         width: 100%; */
-        height: 36%;
+        height: 37%;
         padding: 0 10px 0 10px;
         font-size: 0.95em;
         display: grid;
@@ -592,6 +592,7 @@
         width: 100%;
         height: 100%;
         top: 0;
+        left: 0;
         z-index: 2;
         display: flex;
         align-items: center;

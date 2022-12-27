@@ -6,12 +6,13 @@ import Container from './Container';
 import Results from '../Results/Results';
 import Sure from './SureD';
 import PopUp from './PopUpD';
+import Sort from '../Sort/Sort';
 import './Dashboard.css';
 import users from '../Data/users.json';
 import experiments from '../Data/experiments.json';
 
-const Dashboard = ( {auth, setAuth} ) => {
-    const [user, setUser] = useState(users.find(item => item.user_id === "1"));
+const Dashboard = ( {userId, setUserId} ) => {
+    const [user, setUser] = useState(users.find(item => item.user_id === userId));
     const [exps, setExps] = useState(experiments);
 
     const [sure, setSure] = useState();
@@ -28,7 +29,8 @@ const Dashboard = ( {auth, setAuth} ) => {
         // window.localStorage.clear();
     }, []);
 
-    if (!auth) {
+    // console.log(user);
+    if (userId === '0') {
         return <Navigate to="/" replace />;
     };
 
@@ -38,16 +40,17 @@ const Dashboard = ( {auth, setAuth} ) => {
         <div className= "dashboard">
             <Header setSure= {setSure} />
             <Routes>
-                <Route path= "/" element= {<Container exps= {exps} setTheexp= {setTheexp}
+                <Route path= "/" element= {<Container user= {user} exps= {exps} setExps= {setExps} setTheexp= {setTheexp}
                     setSure= {setSure} setPop= {setPop} />} />
                 <Route path= "/settings" element= {<Container user= {user} setUser= {setUser} setPop= {setPop} />} />
-                <Route path= "/create" element= {<Container />} />
-                <Route path= "/:id" element= {<Container />} />
+                <Route path= "/create/*" element= {<Container user= {user} exps= {exps} setExps= {setExps} 
+                    setPop= {setPop} />} />
+                <Route path= "/:id/*" element= {<Container user= {user} exps= {exps} setExps= {setExps} setPop= {setPop}/>} />
                 <Route path= "/:id/results" element= {<Results />} />
                 <Route path="*" element= {<Navigate to="/" replace />} />
             </Routes>
             <AnimatePresence>
-                {sure && <Sure setAuth= {setAuth} exps= {exps} setExps= {setExps} 
+                {sure && <Sure setUserId= {setUserId} exps= {exps} setExps= {setExps} 
                     theexp= {theexp} sure= {sure} setSure= {setSure} setPop= {setPop} />}
             </AnimatePresence>
             <AnimatePresence>

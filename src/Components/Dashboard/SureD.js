@@ -15,7 +15,7 @@ const sureVariants = {
     }
 }
 
-const Sure = ( {setAuth, exps, setExps, theexp, sure, setSure, setPop} ) => {
+const Sure = ( {setUserId, exps, setExps, theexp, sure, setSure, setPop} ) => {
         const renderSure = () => {
             switch(sure) {
                 default: return;
@@ -30,7 +30,7 @@ const Sure = ( {setAuth, exps, setExps, theexp, sure, setSure, setPop} ) => {
 
         const yes = () => {
             if (sure === 1) {
-                setAuth(false);
+                setUserId('0');
             }
             else if (sure === 2) {
                 const newExps= Array.from(exps);

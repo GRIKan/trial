@@ -85,6 +85,10 @@ const Header = () => {
             };
         };
         setOptions(newOptions);
+
+        if(e.target.className === "smalltextright") {
+            closeMenu();
+        };
     };
 
     const changesrc = (e) => {
@@ -110,50 +114,7 @@ const Header = () => {
         setDispmenu(true);
     };
 
-    const closeMenu = (e) => {
-        const newOptions= Array.from(options);
-        if (e.target.id === "icon" || e.target.parentNode.id === '0') {
-            for (const i in newOptions) {
-                if (i === '0') {
-                    newOptions[i]= true;
-                }
-                else {
-                    newOptions[i]= false;
-                };
-            };
-        }
-        else if (e.target.parentNode.id === '1') {
-            for (const i in newOptions) {
-                if (i === '1') {
-                    newOptions[i]= true;
-                }
-                else {
-                    newOptions[i]= false;
-                };
-            };
-        }
-        else if (e.target.parentNode.id === '2') {
-            for (const i in newOptions) {
-                if (i === '2') {
-                    newOptions[i]= true;
-                }
-                else {
-                    newOptions[i]= false;
-                };
-            };
-        }
-        else if (e.target.parentNode.id === '3') {
-            for (const i in newOptions) {
-                if (i === '3') {
-                    newOptions[i]= true;
-                }
-                else {
-                    newOptions[i]= false;
-                };
-            };
-        };
-        setOptions(newOptions);
-
+    const closeMenu = () => {
         setDispmenu(false);
         setDispbutton(true);
     };
@@ -234,7 +195,7 @@ const Header = () => {
                 <img src= {Close} alt= "Close Icon" onClick= {closeMenu} />
                 <Link to= "/login">
                     <div className= "smallpostitright" id= "3" style= {{margin: '20px' , fontWeight: 'bold'}}
-                        onPointerEnter= {changesrc} onPointerLeave= {changeback} onClick= {closeMenu} >
+                        onPointerEnter= {changesrc} onPointerLeave= {changeback} onClick= {changedisp} >
                             {options[3] ? 
                                 <img src= {Connect} alt= "Login Icon" /> 
                             : 
@@ -248,7 +209,7 @@ const Header = () => {
                 <div className= "headeroptionsright">
                     <Link to= "/">
                         <div className= "smallpostitright" id= "0" 
-                            onPointerEnter= {changesrc} onPointerLeave= {changeback} onClick= {closeMenu} >
+                            onPointerEnter= {changesrc} onPointerLeave= {changeback} onClick= {changedisp} >
                                 {options[0] ? 
                                     <img src= {Choice} alt= "Home Icon" /> 
                                 : 
@@ -261,7 +222,7 @@ const Header = () => {
                     </Link>
                     <Link to= "/about">
                         <div className= "smallpostitright" id= "1" 
-                            onPointerEnter= {changesrc} onPointerLeave= {changeback} onClick= {closeMenu} >
+                            onPointerEnter= {changesrc} onPointerLeave= {changeback} onClick= {changedisp} >
                                 {options[1] ? 
                                     <img src= {Choice} alt= "About Icon" /> 
                                 : 
@@ -274,7 +235,7 @@ const Header = () => {
                     </Link>
                     <Link to= "/features">
                         <div className= "smallpostitright" id= "2" 
-                            onPointerEnter= {changesrc} onPointerLeave= {changeback} onClick= {closeMenu} >
+                            onPointerEnter= {changesrc} onPointerLeave= {changeback} onClick= {changedisp} >
                                 {options[2] ? 
                                     <img src= {Choice} alt= "Features Icon" /> 
                                 : 

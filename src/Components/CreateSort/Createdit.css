@@ -2,7 +2,7 @@
     width: calc(100% - 80px);
     height: calc(100% - 40px);
     margin: 20px 40px 20px 40px;
-    background-color: red;
+    /* background-color: red; */
 }
 
 /* VARIABLES */
@@ -18,23 +18,536 @@
         --darkfontColor: white;
         --lightfontColor: black;
         --errorColor: red;
+        --disabledColor: rgb(84, 84, 84);
     }
 
 /* EXPLORE CSS */
 
     .explore {
+        width: 100%;
         height: 50px;
         display: flex;
         column-gap: 10px;
         background-color: var(--subheaderColor);
+        border-radius: 1vh;
     }
 
-    .explorebuttons {
-        width: 120px;
-        height: 100%;
+    nav a.active {
+        color: var(--darkfontColor);
+        font-weight: bold;
+        background-color: var(--headerColor);
+    }
+
+    nav a {
+        width: 150px;
+        height: 50px;
         color: var(--lightfontColor);
         font-size: 1.1em;
         display: flex;
-        background-color: var(--headerColor);
+        align-items: center;
+        justify-content: center;
         border-radius: 1vh;
+        box-shadow: 0 0 5px var(--headerColor);
+    }
+
+    nav a[data-isdisabled= "true"] {
+        color: var(--disabledColor);
+        background-color: var(--backgroundColor);
+        cursor: default;
+    }
+
+    @media only screen and (max-width: 600px) {
+
+        .explore {
+            width: 100%;
+            height: 110px;
+            row-gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            width: 100px;
+        }
+    
+    }
+
+
+/* GENERAL CSS*/
+
+    .general {
+        height: calc(100% - 50px);
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 70% 30%;
+        grid-template-rows: 1fr min-content;
+        /* background-color: blue; */
+        overflow-y: auto;
+    }
+
+    .infoside {
+        padding: 10px;
+        grid-area: 1/1;
+        /* background-color: green; */
+    }
+
+    .infocat {
+        margin-bottom: 20px;
+        display: grid;
+        row-gap: 10px;
+    }
+
+    .expform {
+        width: 100%;
+        height: 40px;
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 0.9em;
+        background-color: transparent;
+        border: 1px solid black;
+        border-radius: 1vh;
+    }
+
+    .generateside {
+        padding: 10px;
+        grid-area: 1/2;
+        display: grid;
+        /* background-color: blueviolet; */
+        border-left: 1px solid black;
+    }
+
+    #publishbutton {
+        width: 80%;
+        height: 50px;
+        padding: 5px;
+        font-size: 0.9em;
+        justify-self: center;
+        border: none;
+        border-radius: 1vh;
+        cursor: pointer;
+    }
+
+    .infocat.alt {
+        margin: 0;
+        row-gap: 5px;
+    }
+
+    .generalbutton {
+        grid-area: 2/1;
+        display: flex;
+        justify-content: center;
+    }
+
+    #explink {
+        font-size: 0.85em;
+        justify-self: center;
+        color: var(--headerColor);
+        word-break: break-all;
+    }
+
+    .savebutton {
+        width: 100px;
+        height: 50px;
+        margin-top: 10px;
+        font-size: 0.9em;
+        background-color: var(--subheaderColor);
+        border: none;
+        border-radius: 1vh;
+        cursor: pointer;
+    }
+    
+    .savebutton:hover {
+        color: var(--darkfontColor);
+        background-color: var(--headerColor);
+    }
+
+    @media only screen and (max-width: 850px) {
+
+        .general {
+            grid-template-columns: 60% 40%;
+        }        
+    
+    }
+
+    @media only screen and (max-width: 600px) {
+
+        .general {
+            height: calc(100% - 110px);
+            grid-template-columns: 1fr;
+        }
+
+        .generateside {
+            grid-area: 2/1;
+            border: none;
+        }
+
+        .generalbutton {
+            grid-area: 3/1;
+        }
+    
+    }
+
+/* OPTIONS CSS */
+
+    .options {
+        height: calc(100% - 50px);
+        padding: 10px;
+        display: grid;
+        grid-template-rows: 1fr min-content;
+        overflow-y: auto;
+    }
+
+    .thetextareas {
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+
+    .optionarea {
+        padding: 10px 10px 0 10px;
+        display: grid;
+        justify-items: center;
+    }
+
+    #tasksside {
+        grid-template-rows: min-content min-content 1fr;
+    }
+
+    .optionstitle {
+        margin-bottom: 10px;
+    }
+
+    .taskstextarea {
+        width: calc(100%);
+        height: 150px;
+        padding-top: 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+        font-family: sans-serif;
+        font-size: 1em;
+        resize: none;
+        background-color: transparent;
+        border: 1px solid black;
+        border-radius: 1vh;
+    }
+
+    #tasksinfo {
+        font-size: 0.85em;
+    }
+
+    #thankyouside {
+        grid-area: 1/2;
+        grid-template-rows: 50px min-content min-content min-content 1fr;
+        border-left: 1px solid black;
+    }
+
+    #endtitle {
+        text-decoration: underline;
+    }
+
+    .bye {
+        padding-left: 1px;
+        margin-bottom: 10px;
+        justify-self: flex-start;
+        display: flex;
+        column-gap: 10px;
+    }
+
+    #byemessage {
+        transform: scale(1.1);
+    }
+
+    #byelinktitle {
+        margin-bottom: 10px;
+        justify-self: flex-start;
+    }
+
+    @media only screen and (max-width: 600px) {
+
+        .options {
+            height: calc(100% - 110px);
+        }
+
+        .thetextareas {
+            grid-template-columns: 1fr;
+        }
+
+        #thankyouside {
+            grid-area: 2/1;
+            border: none;
+        }
+    
+    }
+
+/* ADD CARDS CSS*/
+
+    .addcards {
+        height: calc(100% - 50px);
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 70% 30%;
+        grid-template-rows: 1fr min-content;
+        /* background-color: blue; */
+        overflow-y: auto;
+    }
+
+    .cardsside {
+        max-height: calc(100% - 20px);
+        margin: 10px;
+        grid-area: 1/1;
+        border: 1px solid var(--subheaderColor);
+        border-radius: 1vh;
+    }
+
+    .cardsheader {
+        height: 50px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--subheaderColor);
+        border-radius: 1vh 1vh 0 0;
+    }
+
+    .cardsbutton {
+        width: 100px;
+        height: 30px;
+        color: var(--darkfontColor);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--headerColor);
+        border: none;
+        border-radius: 1vh;
+        box-shadow: 0 0 5px var(--headerColor);
+        cursor: pointer;
+    }
+
+    .cardsbutton:hover {
+        color: var(--lightfontColor);
+        background-color: var(--subheaderColor);
+    }
+
+    .cardsbutton > img {
+        display: none;
+    }
+
+    .cardsbody {
+        max-height: calc(100% - 50px);
+        overflow-y: auto;
+    }
+
+    /* IMPORT CARDS CSS */
+
+        .importcards {
+            position: absolute;
+            width: 100%;
+            height: calc(100% - 70px);
+            top: 70px;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(var(--backgroundRGBColor), 0.9);
+        }
+
+        .importcardscontainer {
+            width: 500px;
+            height: 300px;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--subheaderColor);
+            border-radius: 1vh;
+            box-shadow: 0 0 20px var(--headerColor);
+        }
+
+        .importcardscontainer > textarea {
+            background-color: var(--backgroundColor);
+            box-shadow: 0 0 5px var(--headerColor);
+        }
+
+        #importcardsinfo {
+            margin-bottom: 10px;
+        }
+
+        #duplicated {
+            color: var(--errorColor);
+            font-weight: bold;
+        }
+
+        .importcardsbutton {
+            width: 100px;
+            height: 30px;
+            margin-top: 10px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 1vh;
+            cursor: pointer;
+        }
+
+        #savecardsbutton {
+            margin-right: 5px;
+            color: var(--darkfontColor);
+            background-color: var(--headerColor);
+        }
+
+        #savecardsbutton:hover, #cancelimport:hover {
+            color: var(--lightfontColor);
+            background-color: var(--subheaderColor);
+            box-shadow: 0 0 5px var(--headerColor);
+        }
+
+        #cancelimport {
+            margin-left: 5px;
+            color: var(--lightfontColor);
+            background-color: var(--backgroundColor);
+        }
+
+    /* DELETE CARDS CSS */
+
+        #totalcards {
+            margin-left: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .iconhover {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1vh;
+            cursor: pointer;
+        }
+
+        .iconhover:hover {
+            background-color: var(--subheaderColor);
+        }
+
+        .iconhover > img {
+            width: 20px;
+            height: 20px;
+        }
+
+    /* ADD A CARD CSS*/
+
+        .addacard {
+            margin: 5px 0 5px 0;
+            padding: 0 10px 0 10px;
+        }
+
+        .savecardbutton {
+            width: 100px;
+            height: 30px;
+            margin-top: 5px;
+            font-size: 0.9em;
+            background-color: var(--subheaderColor);
+            border: none;
+            border-radius: 1vh;
+            cursor: pointer;
+        }
+        
+        .savecardbutton:hover {
+            color: var(--darkfontColor);
+            background-color: var(--headerColor);
+        }
+
+    .addedcard {
+        width: 100%;
+        min-height: 50px;
+        padding: 5px 10px 5px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid var(--subheaderColor);
+        border-bottom: 1px solid var(--subheaderColor);
+        word-break: break-all;
+    }
+
+    .addedcard:last-child {
+        border-radius: 0 0 1vh 1vh;
+    }
+
+    .addedcard > span {
+        width: 100%;
+    }
+
+    #deletecardicon {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    #deletecardicon:hover {
+        background-color: var(--subheaderColor);
+        border-radius: 1vh;
+    }
+
+    #deletecardicon > img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .settingsside {
+        grid-area: 1/2;
+        /* background-color: blueviolet; */
+    }
+
+    .settingscontainer {
+        padding: 10px;
+        border-left: 1px solid black;
+    }
+
+    .settingscheckbox {
+        margin-bottom: 10px;
+    }
+    
+    .settingscheckbox > label {
+        margin-left: 10px;
+    }
+
+    @media only screen and (max-width: 600px) {
+
+        .addcards {
+            height: calc(100% - 110px);
+            grid-template-columns: 1fr;
+        }
+
+        .cardsside {
+            grid-area: 2/1;
+        }
+
+        .cardsbutton {
+            width: 30px;
+        }
+
+        .cardsbutton > span {
+            display: none;
+        }
+
+        .cardsbutton > img {
+            display: block;
+            width: 16px;
+            height: 16px;
+        }
+
+        #totalcardstext {
+            display: none;
+        }
+
+        .settingsside {
+            grid-area: 1/1;
+        }
+
+        .settingscontainer {
+            border: none;
+        }
+    
     }

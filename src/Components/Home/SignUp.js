@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PinBlue from '../../Images/pinblue.png';
 import Show from '../../Images/show.png';
 import Hide from '../../Images/hide.png';
 import Connect from '../../Images/greenflip.png';
 
-const SignUp = ( {setPop} ) => {
+const SignUp = ( {users, setUsers, setPop} ) => {
     const [inputMail, setInputMail] = useState("");
     const [inputUser, setInputUser] = useState("");
     const [inputPass, setInputPass] = useState("");
@@ -26,7 +26,7 @@ const SignUp = ( {setPop} ) => {
     const [redPasConf, setRedPasConf] = useState(false);
 
     useEffect(() => {
-        if (!(inputPass === "")) {
+        if (!(eye === true)) {
             const end= document.querySelector('#psw');
             var len = end.value.length;
             end.focus();
@@ -35,13 +35,22 @@ const SignUp = ( {setPop} ) => {
     }, [eye]);
     
     useEffect(() => {
-        if (!(inputPassConf === "")) {
+        if (!(eyeConf === true)) {
             const end= document.querySelector('#psw2');
             var len = end.value.length;
             end.focus();
             end.setSelectionRange(len, len);
         };
     }, [eyeConf]);
+
+    useEffect(() => {
+        if ((inputPass === inputPassConf) && !(inputPassConf === '') && (inputPassConf.length > 4)) {
+            setPasConf(true);
+        }
+        else {
+            setPasConf(false);
+        };
+    }, [inputPass, inputPassConf]);
 
     const inputMailHandler = (e) => {
         setInputMail(e.target.value);
@@ -77,13 +86,6 @@ const SignUp = ( {setPop} ) => {
     const inputPassConfHandler = (e) => {
         setInputPassConf(e.target.value);
         setRedPasConf(true);
-
-        if (inputPass === e.target.value) {
-            setPasConf(true);
-        }
-        else {
-            setPasConf(false);
-        };
     };
 
     const changeLine = () => {
@@ -129,12 +131,21 @@ const SignUp = ( {setPop} ) => {
             setRedPasConf(true);
         };
     };
-
+    // console.log((1 + +users[users.length - 1].user_id).toString());
     const gotoLogin = (e) => {
         e.preventDefault();
+        console.log(inputMail);
+        console.log(inputUser);
+        console.log(inputPass);
+        const newUsers= Array.from(users);
+        newUsers.push({"user_id": (1 + +users[users.length - 1].user_id).toString(), 
+            "name": inputUser, "mail": inputMail, "password": inputPass});
+        setUsers(newUsers);
+        
         setPop(1);
         setTimeout(function() {
-            window.location.pathname= "/login";
+            // window.location.pathname= "/login";
+            return <Navigate to= "/login" replace />
         }, 1300);
     };
 

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Logo from '../../Images/logo2.png';
 import Greek from '../../Images/greekflag.png';
 import UK from '../../Images/ukflag.png';
-import Plus from '../../Images/plus.png';
+import Plus from '../../Images/whiteplus.png';
 import User from '../../Images/user.png';
 
 const Header = ( {setSure} ) => {

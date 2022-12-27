@@ -20,7 +20,7 @@ const Thankyou = () => {
                     <p id= "thanks">Ευχαριστούμε!</p>
                     <p id= "note">Μεταβείτε στον παρακάτω σύνδεσμο για να απαντήσετε σε ένα σύντομο 
                         <br />
-                        <motion.a href= "https://forms.gle/ck4FYHxgS9dU7SLb8" target= "_blank"
+                        <motion.a href= "https://forms.gle/ck4FYHxgS9dU7SLb8" target= "_blank" rel="noopener noreferrer"
                             style= {{ fontWeight: 'bold' }} whileHover= {{ scale: 1.2 }} >
                             ερωτηματολόγιο
                         </motion.a>

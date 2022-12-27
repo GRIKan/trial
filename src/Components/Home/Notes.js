@@ -1,12 +1,11 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import About from './About';
 import Features from './Features';
 import Login from './LogIn';
 import SignUp from './SignUp';
 
-const Notes = ( {setPop, setAuth} ) => {
+const Notes = ( {users, setUsers, setUser, setPop} ) => {
     var location= useLocation();
 
     const renderContent = () => {
@@ -22,12 +21,12 @@ const Notes = ( {setPop, setAuth} ) => {
         }
         else if (location.pathname === '/login') {
             return (
-                <Login setAuth= {setAuth} />
+                <Login users= {users} setUser= {setUser} />
             )
         }
         else if (location.pathname === '/signup') {
             return (
-                <SignUp setPop= {setPop} />
+                <SignUp users= {users} setUsers= {setUsers} setPop= {setPop} />
             )
         };
     };

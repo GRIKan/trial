@@ -30,7 +30,7 @@ const Settings = ( {user, setUser, setPop} ) => {
     const [redPasConf, setRedPasConf] = useState(false);
 
     useEffect(() => {
-        if (!(inputPass === "")) {
+        if (!(eye === true)) {
             const end= document.querySelector('#psw');
             var len = end.value.length;
             end.focus();
@@ -39,7 +39,7 @@ const Settings = ( {user, setUser, setPop} ) => {
     }, [eye]);
     
     useEffect(() => {
-        if (!(inputPassNew === "")) {
+        if (!(eyeNew === true)) {
             const end= document.querySelector('#pswn');
             var len = end.value.length;
             end.focus();
@@ -48,7 +48,7 @@ const Settings = ( {user, setUser, setPop} ) => {
     }, [eyeNew]);
     
     useEffect(() => {
-        if (!(inputPassConf === "")) {
+        if (!(eyeConf === true)) {
             const end= document.querySelector('#psw2');
             var len = end.value.length;
             end.focus();
@@ -57,10 +57,13 @@ const Settings = ( {user, setUser, setPop} ) => {
     }, [eyeConf]);
     
     useEffect(() => {
-        if ((inputPassNew === inputPassConf) && !(inputPassConf === '')) {
+        if ((inputPassNew === inputPassConf) && !(inputPassConf === '') && (inputPassConf.length > 4)) {
             setPasConf(true);
+        }
+        else {
+            setPasConf(false);
         };
-    }, [inputPassNew]);
+    }, [inputPassNew, inputPassConf]);
 
     const inputUserHandler = (e) => {
         setInputUser(e.target.value);
@@ -108,13 +111,6 @@ const Settings = ( {user, setUser, setPop} ) => {
     const inputPassConfHandler = (e) => {
         setInputPassConf(e.target.value);
         setRedPasConf(true);
-
-        if ((inputPassNew === e.target.value) && !(e.target.value === '')) {
-            setPasConf(true);
-        }
-        else {
-            setPasConf(false);
-        };
     };
 
     const changeLine = () => {

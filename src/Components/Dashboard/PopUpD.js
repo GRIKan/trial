@@ -21,6 +21,12 @@ const PopUp = ( {pop, setPop} ) => {
             case 2: return "Άλλαξαν!";
             case 3: return "Άλλαξε!";
             case 4: return "Διαγράφηκε!";
+            case 5: return "Δημιουργήθηκε!";
+            case 6: return "Αποθηκεύτηκαν!";
+            case 7: return "Προστέθηκε!";
+            case 8: return "Προστέθηκαν!";
+            case 9: return "Ενημερώθηκαν!";
+            case 10: return "Διαγράφηκαν!";
         };
     };
 
