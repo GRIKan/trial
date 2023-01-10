@@ -42,16 +42,6 @@ const maxVariants = {
     transition: { duration: 0.1, type: "spring", bounce: 0 },
 }
 
-const minVariants = {
-    // initial: {
-    //     height: 'calc(39vh - 6px)'
-    // },
-    animate: {
-        height: 'calc(29vh - 26px)'
-    },
-    transition: { duration: 0.1, type: "spring", bounce: 0 }
-}
-
 const Category = ( {displaydrops, changelang, setSure, setCategoryInfo, setPop, inDrag, setInDrag, card, category, 
     cards, cardsInCategory, categories, categoriesOrder, setCards, setCardsInCategory, setCategories} ) => {  
         const [rename, setRename] = useState(false);
@@ -138,39 +128,39 @@ const Category = ( {displaydrops, changelang, setSure, setCategoryInfo, setPop, 
         return (
             <li className= "category" data-ismin= {displaymin}>
                 <div className= "categoryheader" data-ismin= {displaymin}>
-                        <div id= "categoryminimize">
-                            {displayminmax && displaymin &&
-                                <img src= {Min} alt= {"Minimize Icon"} id= "minimize"
-                                    title= {changelang ? "Minimize" : "Ελαχιστοποίηση"}
-                                    onClick= {minimizeCategoryCardList} style= {{width: '16px', height: '16px'}} />}
-                            {displayminmax && !displaymin && 
-                                <img src= {Max} alt= {"Maximize Icon"} id= "maximize" 
-                                    title= {changelang ? "Maximize" : "Μεγιστοποίηση"}
-                                    onClick= {maximizeCategoryCardList} style= {{width: '16px', height: '16px'}} />}
+                    <div id= "categoryminimize">
+                        {displayminmax && displaymin &&
+                            <img src= {Min} alt= {"Minimize Icon"} id= "minimize"
+                                title= {changelang ? "Minimize" : "Ελαχιστοποίηση"}
+                                onClick= {minimizeCategoryCardList} style= {{width: '16px', height: '16px'}} />}
+                        {displayminmax && !displaymin && 
+                            <img src= {Max} alt= {"Maximize Icon"} id= "maximize" 
+                                title= {changelang ? "Maximize" : "Μεγιστοποίηση"}
+                                onClick= {maximizeCategoryCardList} style= {{width: '16px', height: '16px'}} />}
+                    </div>
+                    <div id= "categorytitle">
+                        <div id= "categorytitletext"
+                        title= {(changelang ? "Rename category: " : "Μετονομασία κατηγορίας: ") + category.name} 
+                            onClick= {renameCategory} >
+                            {category.name}
                         </div>
-                        <div id= "categorytitle">
-                            <div id= "categorytitletext"
-                            title= {(changelang ? "Rename category: " : "Μετονομασία κατηγορίας: ") + category.name} 
-                                onClick= {renameCategory} >
-                                {category.name}
-                            </div>
-                            <img id= "categorytitleedit" src= {Edit} alt= "Edit Icon" 
-                                title= {(changelang ? "Rename category: " : "Μετονομασία κατηγορίας: ") + category.name}
-                                onClick= {renameCategory} 
-                                style= {{width: '21px', height: '16px'}} />
-                        </div>
-                        {rename && <Rename setRename= {setRename} setPop= {setPop} changelang= {changelang}
-                            inputText= {inputText} setInputText= {setInputText}
-                            red= {red} setRed= {setRed} visible= {visible} setVisible= {setVisible}
-                            category= {category} categories= {categories} setCategories= {setCategories} />}
-                        <div id= "categorydelete">
-                            <img src= {Delete} alt= "Delete Icon" 
-                                title= {changelang ? "Delete category" : "Διαγραφή κατηγορίας: "}
-                                onClick= {deleteCategory} style= {{width: '16px', height: '16px'}} />
-                        </div>
+                        <img id= "categorytitleedit" src= {Edit} alt= "Edit Icon" 
+                            title= {(changelang ? "Rename category: " : "Μετονομασία κατηγορίας: ") + category.name}
+                            onClick= {renameCategory} 
+                            style= {{width: '21px', height: '16px'}} />
+                    </div>
+                    {rename && <Rename setRename= {setRename} setPop= {setPop} changelang= {changelang}
+                        inputText= {inputText} setInputText= {setInputText}
+                        red= {red} setRed= {setRed} visible= {visible} setVisible= {setVisible}
+                        category= {category} categories= {categories} setCategories= {setCategories} />}
+                    <div id= "categorydelete">
+                        <img src= {Delete} alt= "Delete Icon" 
+                            title= {changelang ? "Delete category" : "Διαγραφή κατηγορίας: "}
+                            onClick= {deleteCategory} style= {{width: '16px', height: '16px'}} />
+                    </div>
                 </div>
                 <AnimatePresence initial= {minimize}>
-                    {!minimize && <motion.div className= "categorycontainer" data-ismin= {displaymin} {...maxVariants}>
+                    {!minimize && <motion.div className= "categorycontainer" data-ismin= {displaymin} {...maxVariants} >
                         <Droppable droppableId= {category.id}>
                             { (provided, snapshot) => (
                                     <motion.div className= "categorycardlist" {...droppableVariants}     
@@ -196,8 +186,10 @@ const Category = ( {displaydrops, changelang, setSure, setCategoryInfo, setPop, 
                     </motion.div>}
                 </AnimatePresence>
                 <AnimatePresence>
-                    {minimize && <motion.div className= "categorycontainer" data-ismin= {displaymin} {...minVariants}
-                        initial= {{ height: height + 'px' }}>
+                    {minimize && <motion.div className= "categorycontainer" data-ismin= {displaymin}
+                        initial= {{ height: height + 'px' }} 
+                        animate= {{ height: 'calc(29vh - 26px)' }}
+                        transition= {{ duration: 0.2, type: "spring", bounce: 0 }} >
                         <Droppable droppableId= {category.id}>
                             { (provided, snapshot) => (
                                     <motion.div className= "categorycardlistminimized" id= "categoryscrollbar"

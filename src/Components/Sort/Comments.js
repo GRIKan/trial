@@ -1,26 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-const commentsVariants = {
-    initial: {
-        x: '45vw',
-        y: '-45vh',
-        scale: 0
-    },
-    animate: {
-        x: 0,
-        y: 0,
-        scale: 1,
-        transition: { duration: 0.5 }
-    },
-    exit: {
-        x: '45vw',
-        y: '-45vh',
-        scale: 0, 
-        transition: { duration: 0.3 }
-    }
-}
-
 const Comments = ( {setDispComments, changelang, comments, setComments, setPop} ) => {   
     const [inputText, setInputText] = useState(comments);
     const [counter, setCounter] = useState(0);
@@ -64,13 +44,19 @@ const Comments = ( {setDispComments, changelang, comments, setComments, setPop} 
         <div className= "comments">
             <motion.div className= "commentscontainer"
                 initial= {{ 
-                    x: `calc(-50vw + 5vw + ${document.querySelector('#comments').offsetLeft + 'px'})`, 
+                    x: ((window.innerWidth > 600) ?
+                        `calc(-50vw + 5vw + ${document.querySelector('#comments').offsetLeft + 'px'})`
+                        :
+                        `calc(50vw - 5vw - ${document.querySelector('#comments').offsetLeft + 'px'})`), 
                     y: `calc(-50vh + 16px + ${document.querySelector('#comments').offsetTop + 'px'})`,
                     scale: 0 
                 }}
-                animate= {{ x:0, y: 0, scale: 1, transition: { duration: 0.5 } }}
+                animate= {{ x: 0, y: 0, scale: 1, transition: { duration: 0.5 } }}
                 exit= {{ 
-                    x: `calc(-50vw + 5vw + ${document.querySelector('#comments').offsetLeft + 'px'})`, 
+                    x: ((window.innerWidth > 600) ?
+                        `calc(-50vw + 5vw + ${document.querySelector('#comments').offsetLeft + 'px'})`
+                        :
+                        `calc(50vw - 5vw - ${document.querySelector('#comments').offsetLeft + 'px'})`), 
                     y: `calc(-50vh + 16px + ${document.querySelector('#comments').offsetTop + 'px'})`,
                     scale: 0, transition: { duration: 0.3 } 
                 }} >

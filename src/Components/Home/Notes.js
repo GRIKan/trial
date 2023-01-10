@@ -5,7 +5,7 @@ import Features from './Features';
 import Login from './LogIn';
 import SignUp from './SignUp';
 
-const Notes = ( {users, setUsers, setUser, setPop} ) => {
+const Notes = ( {users, setUsers, user, setUser, setPop} ) => {
     var location= useLocation();
 
     const renderContent = () => {
@@ -21,7 +21,7 @@ const Notes = ( {users, setUsers, setUser, setPop} ) => {
         }
         else if (location.pathname === '/login') {
             return (
-                <Login users= {users} setUser= {setUser} />
+                <Login users= {users} user= {user} setUser= {setUser} />
             )
         }
         else if (location.pathname === '/signup') {

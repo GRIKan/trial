@@ -40,16 +40,6 @@ const maxVariants = {
     transition: { duration: 0.1, type: "spring", bounce: 0 },
 }
 
-const minVariants = {
-    // initial: {
-    //     height: 'calc(39vh - 6px)'
-    // },
-    animate: {
-        height: 'calc(29vh - 26px)'
-    },
-    transition: { duration: 0.1, type: "spring", bounce: 0 }
-}
-
 const CloseCategory = ( {displaydrops, changelang, setSure, setCategoryInfo, inDrag, setInDrag, card, category, 
     cards, cardsInCategory, categories, setCards, setCardsInCategory, setCategories} ) => {  
         const [displayminmax, setDisplayminmax] = useState(category.minimize);
@@ -118,25 +108,25 @@ const CloseCategory = ( {displaydrops, changelang, setSure, setCategoryInfo, inD
         return (
             <li className= "category" data-ismin= {displaymin}>
                 <div className= "categoryheader" data-ismin= {displaymin}>
-                        <div id= "categoryminimize">
-                            {displayminmax && displaymin &&
-                                <img src= {Min} alt= {"Minimize Icon"} id= "minimize"
-                                    title= {changelang ? "Minimize" : "Ελαχιστοποίηση"}
-                                    onClick= {minimizeCategoryCardList} style= {{width: '16px', height: '16px'}} />}
-                            {displayminmax && !displaymin && 
-                                <img src= {Max} alt= {"Maximize Icon"} id= "maximize" 
-                                    title= {changelang ? "Maximize" : "Μεγιστοποίηση"}
-                                    onClick= {maximizeCategoryCardList} style= {{width: '16px', height: '16px'}} />}
+                    <div id= "categoryminimize">
+                        {displayminmax && displaymin &&
+                            <img src= {Min} alt= {"Minimize Icon"} id= "minimize"
+                                title= {changelang ? "Minimize" : "Ελαχιστοποίηση"}
+                                onClick= {minimizeCategoryCardList} style= {{width: '16px', height: '16px'}} />}
+                        {displayminmax && !displaymin && 
+                            <img src= {Max} alt= {"Maximize Icon"} id= "maximize" 
+                                title= {changelang ? "Maximize" : "Μεγιστοποίηση"}
+                                onClick= {maximizeCategoryCardList} style= {{width: '16px', height: '16px'}} />}
+                    </div>
+                    <div id= "categorytitle">
+                        <div id= "categorytitletext" title= {category.name}>
+                            {category.name}
                         </div>
-                        <div id= "categorytitle">
-                            <div id= "categorytitletext" title= {category.name}>
-                                {category.name}
-                            </div>
-                        </div>
-                        <div id= "categorydelete">
-                            <img src= {Delete} alt= "Delete Icon" 
-                                title= {changelang ? "Delete all category cards" : "Διαγραφή όλων των καρτών της κατηγορίας"} onClick= {deleteCards} style= {{width: '16px', height: '16px'}} />
-                        </div>
+                    </div>
+                    <div id= "categorydelete">
+                        <img src= {Delete} alt= "Delete Icon" 
+                            title= {changelang ? "Delete all category cards" : "Διαγραφή όλων των καρτών της κατηγορίας"} onClick= {deleteCards} style= {{width: '16px', height: '16px'}} />
+                    </div>
                 </div>
                 <AnimatePresence initial= {minimize}>
                     {!minimize && <motion.div className= "categorycontainer" data-ismin= {displaymin} {...maxVariants}>
@@ -165,8 +155,10 @@ const CloseCategory = ( {displaydrops, changelang, setSure, setCategoryInfo, inD
                     </motion.div>}
                 </AnimatePresence>
                 <AnimatePresence>
-                    {minimize && <motion.div className= "categorycontainer" data-ismin= {displaymin} {...minVariants}
-                        initial= {{ height: height + 'px' }}>
+                    {minimize && <motion.div className= "categorycontainer" data-ismin= {displaymin}
+                        initial= {{ height: height + 'px' }}
+                        animate= {{ height: 'calc(29vh - 26px)' }}
+                        transition= {{ duration: 0.2, type: "spring", bounce: 0 }} >
                         <Droppable droppableId= {category.id}>
                             { (provided, snapshot) => (
                                     <motion.div className= "categorycardlistminimized" id= "categoryscrollbar"

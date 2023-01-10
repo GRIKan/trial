@@ -24,6 +24,16 @@
 
 /* TASKS CSS */
 
+    #languaget > img{
+        position: absolute;
+        width: 30px;
+        height: 20px;
+        top: 5px;
+        right: 5px;
+        box-shadow: 0 0 5px black;
+        cursor: pointer;
+    }
+
     .tasks {
         position: absolute;
         width: 100%;
@@ -54,8 +64,11 @@
         cursor: default;
     }
 
-    a {
+    .taskscontainer > div {
+        font-size: 1.2em;
+        font-weight: bold;
         color: var(--headerColor);
+        cursor: pointer;
     }
 
     @media only screen and (max-width: 800px) {
@@ -119,12 +132,16 @@
         justify-content: center;
     }
 
-    #bsave, #bdone {
+    .headercenter > .buttonheader {
         font-size: 0.9em;
     }
 
     #bdone[data-isenabled= "false"] {
-        cursor: default;
+        cursor: not-allowed;
+    }
+    
+    #bdone[data-isenabled= "false"]:hover {
+        background-color: rgba(var(--backgroundRGBColor), 1);
     }
 
     .headeright {
@@ -158,7 +175,7 @@
     .buttonheader {
         height: 32px;
         margin-left: 0.5vw;
-        padding: 12px;
+        padding: 0 12px 0 12px;
         align-self: center;
         font-size: 0.85em;
         display: inline-flex;
@@ -221,7 +238,7 @@
         position: relative;
         /* top: 7.7vh;
         width: 100%; */
-        height: 37%;
+        height: 36%;
         padding: 0 10px 0 10px;
         font-size: 0.95em;
         display: grid;
@@ -275,24 +292,31 @@
         }
 
     .addcat {
-        justify-content: flex-end;
         display: flex;
         align-items: center;
+        justify-content: flex-end;
     }
 
     #plus {
         padding: 3px;
-        margin-right: 0.5vw;
         background-color: var(--headerColor);
         border-radius: 2vh;
         box-shadow: 0 0 3px var(--headerColor);
         cursor: pointer;
     }
 
+    #addcattext {
+        margin-left: 0.5vw;
+    }
+
     @media only screen and (max-width: 600px) {
 
         .subheader {
             grid-template-columns: calc(100% - 150px - 20px) 150px 20px;
+        }
+        
+        .subheader[data-isclose= "true"] {
+            grid-template-columns: calc(100% - 150px) 150px;
         }
 
         .progressbar {
@@ -398,6 +422,23 @@
 
     #close:hover {
         background-color: var(--subheaderColor);
+    }
+
+    #taskinstructions {
+        width: 100px;
+        height: 40px;
+        margin-left: 10px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--headerColor);
+        cursor: pointer;
+    }
+    
+    #taskinstructions:hover {
+        background-color: var(--subheaderColor);
+        border-radius: 1vh;
     }
 
     @media only screen and (max-width: 800px) {
@@ -1198,6 +1239,27 @@
         box-shadow: 0 0 5px var(--headerColor);
     }
 
+    @media only screen and (max-width: 800px) {
+
+        .cardcontainer[data-changedraggable= "true"] {
+            height: 25vh !important;
+        }
+        
+        .card[data-changedraggable= "true"] {
+            height: 25vh !important;
+        }
+        
+        .cardname[data-changedraggable= "true"] {
+            max-height: 24vh !important;
+        }
+
+        .slideback[data-changedraggable= "true"] {
+            margin-top: 5px;
+            align-self: flex-start;
+        }
+
+    }
+
 /* SIDEBAR CSS */
 
     .sidebarheader {
@@ -1519,6 +1581,7 @@
     .thankyoucontainer {
         width: 550px;
         height: 250px;
+        padding: 0px 10px 0px 10px;
         font-size: 2.2em;
         font-weight: bold;
         text-align: center;
@@ -1540,6 +1603,10 @@
     #note {
         font-size: 0.8em;
         font-weight: lighter;
+    }
+
+    a {
+        color: var(--headerColor);
     }
 
     @media only screen and (max-width: 800px) {

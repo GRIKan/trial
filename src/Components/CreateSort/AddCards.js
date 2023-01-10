@@ -48,7 +48,7 @@ const AddCards = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
         var finalcard= {};
         cards.map((item, index) => {
             finalcard=  {[`card-${index + 1}`] : 
-                { card_id: `card-${index + 1}`, card_name: item.card_name}};
+                { id: `card-${index + 1}`, name: item.name}};
             finalcards= {...finalcards, ...finalcard};
             return finalcards;
         });
@@ -98,7 +98,7 @@ const AddCards = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
         else {
             var newCards= [];
             importedCards.map((item, index) => {
-                var newCard= { card_id: `card-${index + 1}`, card_name: item};
+                var newCard= { id: `card-${index + 1}`, name: item};
                 newCards= [...newCards, newCard];
                 return newCards;
             });
@@ -127,7 +127,9 @@ const AddCards = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
     };
 
     const deleteAll = () => {
-        setSure(1);
+        if (!exp.publish) {
+            setSure(1);
+        };
     };
 
     const addaCard = () => {
@@ -152,7 +154,7 @@ const AddCards = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
             else {
                 var checkValues= [];
                 cards.map((card) => {
-                    return checkValues= [...checkValues, card.card_name];
+                    return checkValues= [...checkValues, card.name];
                 });
                 if (checkValues.includes(inputCard)) {
                     e.preventDefault();
@@ -161,8 +163,7 @@ const AddCards = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
                     setInputCard(inputCard + exist);
                 }
                 else {
-                    const newCard= {card_id: `card-${cards.length + 1}`, card_name: inputCard};
-                    // console.log(newCard);
+                    const newCard= {id: `card-${cards.length + 1}`, name: inputCard};
                     setCards([...cards, newCard]);
                 };
             }
@@ -216,11 +217,18 @@ const AddCards = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
     };
 
     const deleteCard = (index) => {
-        const newCards= Array.from(cards);
-        newCards.splice(index, 1);
-        setCards(newCards);
-
-        setPop(4);
+        if (!exp.publish) {
+            const theNew= [];
+            const newCards= Array.from(cards);
+            newCards.splice(index, 1);
+            newCards.map((item, index) => {
+                theNew.push({id: `card-${index + 1}`, name: item.name});
+                return item;
+            });
+            setCards(theNew);
+    
+            setPop(4);
+        };
     };
 
     return (
@@ -228,9 +236,9 @@ const AddCards = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
             <div className= "cardsside">
                 <div className= "cardsheader">
                     <button className= "cardsbutton" id= "importcards" onClick= {importCards}
-                        onMouseOver= {() => setOver1(true)} onMouseOut= {() => setOver1(false)} >
+                        onMouseOver= {() => setOver1(true)} onMouseOut= {() => setOver1(false)} disabled= {exp.publish} >
                             <span>Ανέβασμα</span>
-                            <img src= {over1? Add : WhiteAdd} alt= "Add Multiple Icon" />
+                            <img src= {(over1 && !exp.publish)? Add : WhiteAdd} alt= "Add Multiple Icon" />
                     </button>
                     <div id= "totalcards">
                         #
@@ -238,14 +246,15 @@ const AddCards = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
                             No:&nbsp;
                         </span>
                         {cards.length}
-                        <div className= "iconhover" onClick= {deleteAll}>
+                        <div className= "iconhover" onClick= {deleteAll} data-isdisabled= {exp.publish} 
+                            title= "Διαγραφή όλων">
                                 <img src= {Delete} alt= "Delete Icon" />
                         </div>
                     </div>
                     <button className= "cardsbutton" id= "addcards" onClick= {addaCard} data-inadd= {true}
-                        onMouseOver= {() => setOver2(true)} onMouseOut= {() => setOver2(false)} >
+                        onMouseOver= {() => setOver2(true)} onMouseOut= {() => setOver2(false)} disabled= {exp.publish} >
                             <span>Προσθήκη</span>
-                            <img src= {over2? Plus : WhitePlus} alt= "Add Icon" />
+                            <img src= {(over2 && !exp.publish)? Plus : WhitePlus} alt= "Add Icon" />
                     </button>
                 </div>
                 <div className= "cardsbody" id= "containerdscrollbar">
@@ -292,10 +301,11 @@ const AddCards = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
                     </form>}
                     {cards.map((card, index) => {
                         return (
-                            <div key= {card.card_id} className= "addedcard">
-                                <span>{card.card_name}</span>
-                                <div id= "deletecardicon" onClick= {() => deleteCard(index)}>
-                                    <img src= {x} alt= "Delete Card Icon" />
+                            <div key= {card.id} className= "addedcard">
+                                <span>{card.name}</span>
+                                <div id= "deletecardicon" onClick= {() => deleteCard(index)} title= "Διαγραφή κάρτας"
+                                    data-isdisabled= {exp.publish} >
+                                        <img src= {x} alt= "Delete Card Icon" />
                                 </div>
                             </div>
                         )
@@ -306,19 +316,20 @@ const AddCards = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
                 <form className= "settingscontainer" onSubmit= {updatetheStates}>
                     <div className= "settingscheckbox">
                         <input type="checkbox" id="randomizecards" name="randomizecards" value="randomizecards" 
-                                defaultChecked= {exp.randomizecards} />
+                                defaultChecked= {exp.randomizecards} disabled= {exp.publish} />
                         <label htmlFor= "randomizecards">
                             Εμφάνιση σειράς καρτών σε τυχαία σειρά.
                         </label>
                     </div>
                     <div className= "settingscheckbox">
                         <input type="checkbox" id="unsorted" name="unsorted" value="unsorted" 
-                                defaultChecked= {exp.unsorted} />
+                                defaultChecked= {exp.unsorted} disabled= {exp.publish} />
                         <label htmlFor= "unsorted">
                             Να επιτρέπονται μη ταξινομημένες κάρτες.
                         </label>
                     </div>
-                    <input type= "submit" className= "savecardbutton" value= "Ενημέρωση" onClick= {updateStates} />
+                    <input type= "submit" className= "savecardbutton" value= "Ενημέρωση" onClick= {updateStates} 
+                        disabled= {exp.publish} />
                 </form>
             </div>
             <AnimatePresence>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import Logo from '../../Images/logo2.png';
 import Greek from '../../Images/greekflag.png';
 import UK from '../../Images/ukflag.png';
@@ -9,6 +10,33 @@ import Button from '../../Images/greenfull.png';
 import Connect from '../../Images/greenflip.png';
 import Menu from '../../Images/menu.png';
 import Close from '../../Images/close.png';
+
+const dispSidemenuVariants= {
+    initial: {
+        opacity: 0
+    },
+    animate: {
+        opacity: 1,
+        transition: { duration: 0.3 }
+    },
+    exit: {
+        opacity: 0,
+        transition: { duration: 0.2 }
+    }
+}
+
+const sidemenuVariants= {
+    initial: {
+        x: -600
+    },
+    animate: {
+        x: 0
+    },
+    exit: {
+        x: -600
+    },
+    transition: { duration: 0.3 }
+}
 
 const Header = () => {
     const [changelang, setChangelang] = useState(false);
@@ -190,64 +218,69 @@ const Header = () => {
                     <img src= {UK} alt= "UK Flag Icon" lang= "english" />
                 }
             </span>
-            {dispbutton && <img src= {Menu} alt= "Menu Icon" className= "menu" onClick= {showMenu} />}
-            {dispmenu && <div className= "sidemenu">
-                <img src= {Close} alt= "Close Icon" onClick= {closeMenu} />
-                <Link to= "/login">
-                    <div className= "smallpostitright" id= "3" style= {{margin: '20px' , fontWeight: 'bold'}}
-                        onPointerEnter= {changesrc} onPointerLeave= {changeback} onClick= {changedisp} >
-                            {options[3] ? 
-                                <img src= {Connect} alt= "Login Icon" /> 
-                            : 
-                                <img src= {Button} alt= "Login Icon" />
-                            }
-                            <div className= "smalltextright">
-                                Σύνδεση
+            <AnimatePresence>
+                {dispbutton && <motion.img src= {Menu} alt= "Menu Icon" className= "menu" onClick= {showMenu} 
+                    {...dispSidemenuVariants} />}
+            </AnimatePresence>
+            <AnimatePresence>
+                {dispmenu && <motion.div className= "sidemenu" {...sidemenuVariants}>
+                    <img src= {Close} alt= "Close Icon" onClick= {closeMenu} />
+                    <Link to= "/login">
+                        <div className= "smallpostitright" id= "3" style= {{margin: '20px' , fontWeight: 'bold'}}
+                            onPointerEnter= {changesrc} onPointerLeave= {changeback} onClick= {changedisp} >
+                                {options[3] ? 
+                                    <img src= {Connect} alt= "Login Icon" /> 
+                                : 
+                                    <img src= {Button} alt= "Login Icon" />
+                                }
+                                <div className= "smalltextright">
+                                    Σύνδεση
+                                </div>
+                        </div>
+                    </Link>
+                    <div className= "headeroptionsright">
+                        <Link to= "/">
+                            <div className= "smallpostitright" id= "0" 
+                                onPointerEnter= {changesrc} onPointerLeave= {changeback} onClick= {changedisp} >
+                                    {options[0] ? 
+                                        <img src= {Choice} alt= "Home Icon" /> 
+                                    : 
+                                        <img src= {Option} alt= "Home Icon" />
+                                    }
+                                    <div className= "smalltextright">
+                                        Αρχική
+                                    </div>
                             </div>
+                        </Link>
+                        <Link to= "/about">
+                            <div className= "smallpostitright" id= "1" 
+                                onPointerEnter= {changesrc} onPointerLeave= {changeback} onClick= {changedisp} >
+                                    {options[1] ? 
+                                        <img src= {Choice} alt= "About Icon" /> 
+                                    : 
+                                        <img src= {Option} alt= "About Icon" />
+                                    }
+                                    <div className= "smalltextright">
+                                        Σχετικά
+                                    </div>
+                            </div>
+                        </Link>
+                        <Link to= "/features">
+                            <div className= "smallpostitright" id= "2" 
+                                onPointerEnter= {changesrc} onPointerLeave= {changeback} onClick= {changedisp} >
+                                    {options[2] ? 
+                                        <img src= {Choice} alt= "Features Icon" /> 
+                                    : 
+                                        <img src= {Option} alt= "Features Icon" />
+                                    }
+                                    <div className= "smalltextright">
+                                        Λειτουργίες
+                                    </div>
+                            </div>
+                        </Link>
                     </div>
-                </Link>
-                <div className= "headeroptionsright">
-                    <Link to= "/">
-                        <div className= "smallpostitright" id= "0" 
-                            onPointerEnter= {changesrc} onPointerLeave= {changeback} onClick= {changedisp} >
-                                {options[0] ? 
-                                    <img src= {Choice} alt= "Home Icon" /> 
-                                : 
-                                    <img src= {Option} alt= "Home Icon" />
-                                }
-                                <div className= "smalltextright">
-                                    Αρχική
-                                </div>
-                        </div>
-                    </Link>
-                    <Link to= "/about">
-                        <div className= "smallpostitright" id= "1" 
-                            onPointerEnter= {changesrc} onPointerLeave= {changeback} onClick= {changedisp} >
-                                {options[1] ? 
-                                    <img src= {Choice} alt= "About Icon" /> 
-                                : 
-                                    <img src= {Option} alt= "About Icon" />
-                                }
-                                <div className= "smalltextright">
-                                    Σχετικά
-                                </div>
-                        </div>
-                    </Link>
-                    <Link to= "/features">
-                        <div className= "smallpostitright" id= "2" 
-                            onPointerEnter= {changesrc} onPointerLeave= {changeback} onClick= {changedisp} >
-                                {options[2] ? 
-                                    <img src= {Choice} alt= "Features Icon" /> 
-                                : 
-                                    <img src= {Option} alt= "Features Icon" />
-                                }
-                                <div className= "smalltextright">
-                                    Λειτουργίες
-                                </div>
-                        </div>
-                    </Link>
-                </div>
-            </div> }
+                </motion.div> }
+            </AnimatePresence>
         </div>
     )
 }

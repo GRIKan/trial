@@ -12,14 +12,14 @@
         --subheaderColor: rgb(216, 172, 151);
         --backgroundColor: rgb(228, 210, 202);
         --backgroundRGBColor: 228, 210, 202;
-        --categoryColor: rgb(255, 255, 104);
-        --cardColor: rgb(255, 255, 138);
-        --droppableCategory: rgb(253, 253, 153);
         --darkfontColor: white;
         --lightfontColor: black;
         --errorColor: red;
         --disabledColor: rgb(84, 84, 84);
+        --disabledLColor: rgba(16, 16, 16, 0.3);
     }
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 /* EXPLORE CSS */
 
@@ -90,6 +90,14 @@
         /* background-color: green; */
     }
 
+    #isonline {
+        margin-bottom: 10px;
+        grid-area: 1/1;
+        text-align: center;
+        font-weight: bold;
+        color: var(--errorColor);
+    }
+
     .infocat {
         margin-bottom: 20px;
         display: grid;
@@ -126,6 +134,10 @@
         cursor: pointer;
     }
 
+    #publishbutton[disabled] {
+        cursor: not-allowed;
+    }
+
     .infocat.alt {
         margin: 0;
         row-gap: 5px;
@@ -158,6 +170,12 @@
     .savebutton:hover {
         color: var(--darkfontColor);
         background-color: var(--headerColor);
+    }
+    
+    .savebutton[disabled]:hover {
+        color: var(--disabledLColor);
+        background-color: var(--subheaderColor);
+        cursor: not-allowed;
     }
 
     @media only screen and (max-width: 850px) {
@@ -198,12 +216,13 @@
 
     .thetextareas {
         padding: 10px;
+        grid-area: 1/1;
         display: grid;
         grid-template-columns: 50% 50%;
     }
 
     .optionarea {
-        padding: 10px 10px 0 10px;
+        padding: 0 10px 0 10px;
         display: grid;
         justify-items: center;
     }
@@ -231,6 +250,7 @@
     }
 
     #tasksinfo {
+        padding: 0 5px 0 5px;
         font-size: 0.85em;
     }
 
@@ -325,6 +345,12 @@
     .cardsbutton:hover {
         color: var(--lightfontColor);
         background-color: var(--subheaderColor);
+    }
+
+    .cardsbutton[disabled]:hover {
+        color: var(--darkfontColor);
+        background-color: var(--headerColor);
+        cursor: not-allowed;
     }
 
     .cardsbutton > img {
@@ -427,6 +453,10 @@
         .iconhover:hover {
             background-color: var(--subheaderColor);
         }
+        
+        .iconhover[data-isdisabled= "true"]:hover {
+            cursor: not-allowed;
+        }
 
         .iconhover > img {
             width: 20px;
@@ -454,6 +484,12 @@
         .savecardbutton:hover {
             color: var(--darkfontColor);
             background-color: var(--headerColor);
+        }
+
+        .savecardbutton[disabled]:hover {
+            color: var(--disabledLColor);
+            background-color: var(--subheaderColor);
+            cursor: not-allowed;
         }
 
     .addedcard {
@@ -488,6 +524,10 @@
     #deletecardicon:hover {
         background-color: var(--subheaderColor);
         border-radius: 1vh;
+    }
+    
+    #deletecardicon[data-isdisabled= "true"]:hover {
+        cursor: not-allowed;
     }
 
     #deletecardicon > img {

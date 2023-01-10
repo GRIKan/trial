@@ -2,11 +2,11 @@ import lang from './language.json';
 
 const ChangeLanguage = () => {
     var defaultLanguage = "greek";
-    console.log(lang);
+    // console.log(lang);
     var flag = document.getElementById("language");
 
     const renderView = (data) => {
-        console.log(data);
+        // console.log(data);
         var save = document.getElementById("save");
         save.style.opacity= "0";
         var done = document.getElementById("done");
@@ -18,7 +18,9 @@ const ChangeLanguage = () => {
         comments.style.opacity= "0";
 
         var addcattext = document.getElementById("addcattext");
-        addcattext.style.opacity= "0";
+        if (addcattext !== null) {
+          addcattext.style.opacity= "0";
+        };
 
         setTimeout(function(){
             save.innerText = data.save;
@@ -34,9 +36,11 @@ const ChangeLanguage = () => {
             comments.style.opacity= "1";
             comments.style.transition= "linear 0.10s";
             
-            addcattext.innerText = data.addcattext;
-            addcattext.style.opacity= "1";
-            addcattext.style.transition= "linear 0.10s";
+            if (addcattext !== null) {
+              addcattext.innerText = data.addcattext;
+              addcattext.style.opacity= "1";
+              addcattext.style.transition= "linear 0.10s";
+            };
         },200)
     };
 
@@ -50,7 +54,6 @@ const ChangeLanguage = () => {
         var attr = event.target.getAttribute("lang");
         if (attr) {
           getData(attr);
-        //   console.log('pig');
         };
       };
     

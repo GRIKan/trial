@@ -15,12 +15,11 @@
         --subheaderColor: rgb(216, 172, 151);
         --backgroundColor: rgb(228, 210, 202);
         --backgroundRGBColor: 228, 210, 202;
-        --categoryColor: rgb(255, 255, 104);
-        --cardColor: rgb(255, 255, 138);
-        --droppableCategory: rgb(253, 253, 153);
         --darkfontColor: white;
         --lightfontColor: black;
     }
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 /* INFO */
 

@@ -3,16 +3,6 @@ import { Draggable } from 'react-beautiful-dnd';
 import { motion } from 'framer-motion';
 import Delete from '../../Images/x.png';
 
-const childVariants = {
-    initial: {
-        opacity: 0
-    },
-    animate: {
-        opacity: 1
-    },
-    // transition: { duration: 3 }
-}
-
 const CardInCategory = ( {displaydrops, changelang, inDrag, setInDrag, card, category, index, cards, cardsInCategory, categories, 
     setCards, setCardsInCategory, setCategories} ) => {
         var timer;
@@ -77,8 +67,8 @@ const CardInCategory = ( {displaydrops, changelang, inDrag, setInDrag, card, cat
         };
 
         return ( 
-            <motion.div className= "categorycardcontainer" onMouseEnter= {onHover} onMouseLeave= {notOnHover} whileHover= {{ scale: 1.005 }}
-            >
+            <motion.div className= "categorycardcontainer" onMouseEnter= {onHover} onMouseLeave= {notOnHover} 
+                whileHover= {{ scale: 1.005 }} >
                 <Draggable draggableId= {card.id} index= {index}>
                     { (provided, snapshot) => (
                         <div className= "categorycard" onPointerDown= {resetXs} onPointerUp= {showXs}

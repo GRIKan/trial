@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import results from '../Data/results.json';
 
 const sureVariants = {
     initial: {
@@ -17,11 +18,14 @@ const sureVariants = {
 
 const Sure = ( {sure, setSure, categoryinfo, setPop, changelang, cards, cardsInCategory, categories, categoriesOrder,
     setCards, setCardsInCategory, setCategories, setCategoriesOrder,
-    setThanks} ) => {
+    setThanks, theid, comments} ) => {
+        const [res, setRes] = useState(results);
+        // console.log(res);
+        
         const renderSure = () => {
             switch(sure) {
                 default: return;
-                case 1: return (changelang ? "submit this?" : "ΟΧΙ");
+                case 1: return (changelang ? "submit this?" : "το υποβάλετε;");
                 case 2: return(
                     <div>
                         {changelang ? "submit this?" : "το υποβάλετε;"}
@@ -42,6 +46,28 @@ const Sure = ( {sure, setSure, categoryinfo, setPop, changelang, cards, cardsInC
 
         const yes = () => {
             if (sure === 1 || sure === 2) {
+                const datas= [];
+                categoriesOrder.order.map((categoryId) => {
+                    const category= categories[categoryId];
+                    category.cardId.map(cardId => {
+                        cardId= cardsInCategory[cardId];
+                        const data1= {card_id: cardId.id, card_name: cardId.name, 
+                            cat_id: category.id, cat_name: category.name};
+                        datas.push(data1);
+                        return (cardId);
+                    });
+                    return (categoryId);
+                });
+                Object.values(cards).map((card) => {
+                    const data1= {card_id: card.id, card_name: card.name, 
+                        cat_id: "", cat_name: ""};
+                    datas.push(data1);
+                    return (card);
+                });
+                // console.log(datas);
+                const result= {res_id: res.length + 1, data: datas, comments: comments,exp_id: theid};
+                setRes([...res, result]);
+                window.localStorage.removeItem(`${theid}`);
                 setThanks(true);
             }
             else if (sure === 3) {

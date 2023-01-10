@@ -72,7 +72,8 @@ const Experiments = ( {user, exps, setExps, setTheexp, setSure, setPop} ) => {
                             </div>
                         </li>
                     )
-                }
+                };
+                return true;
             })}
         </ul>
     )

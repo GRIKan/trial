@@ -7,7 +7,19 @@ import results from '../Data/results.json';
 const Results = () => {
     const { id } = useParams();
     const exp= experiments.find(item => item.exp_id === id);
-    const res= results.find(item => item.exp_id === id);
+    // console.log(exp);
+    const res= results.filter(item => item.exp_id === id);
+    // console.log(res);
+
+    var nofcat= 0;
+    var nofcom= 0;
+    res.map(item => {
+        nofcat+= item.data[item.data.length-1].cat_id;
+        if (item.comments !== "") {
+            nofcom+= 1;
+        };
+        return true;
+    });
 
     var text1= "card_id,card_name,cat_id,cat_name,user_id\r\n";
     var text2= "comments,user_id\r\n";
@@ -18,26 +30,28 @@ const Results = () => {
         window.location.pathname= "/dashboard";
     };
 
-    // console.log(exp);
-
     const makecsv = () => {
-        
-        (res.data).map(item => {
-            text= text + item.card_id + ",";
-            text= text + item.card_name + ",";
-            text= text + item.cat_id + ",";
-            text= text + item.cat_name + ",";
-            text= text + item.user_id;
-            text= text + "\r\n";
+        var counter= 0;
+        res.map(items => {
+            items.data.map(item => {
+                text= text + item.card_id + ",";
+                text= text + item.card_name + ",";
+                text= text + (item.cat_id + counter) + ",";
+                text= text + item.cat_name + ",";
+                text= text + items.res_id;
+                text= text + "\r\n";
+                return counter;
+            });
+            counter+= items.data[items.data.length-1].cat_id;
             return text;
         });
         // console.log(text);
     };
 
     const makecom = () => {
-        (res.comments).map(item => {
-            text= text + item.comment + ",";
-            text= text + item.user_id;
+        res.map(item => {
+            text= text + item.comments + ",";
+            text= text + item.res_id;
             text= text + "\r\n";
             return text;
         });
@@ -81,21 +95,21 @@ const Results = () => {
                     <div className= "resposttext">
                         Συμμετέχοντες:
                         <br />
-                        {res.participants}
+                        {res.length}
                     </div>
                 </div>
                 <div className= "respost" id= "categories">
                     <div className= "resposttext">
                         Κατηγορίες:
                         <br />
-                        {res.data[res.data.length-1].cat_id}
+                        {nofcat}
                     </div>
                     </div>
                 <div className= "respost" id= "comments">
                     <div className= "resposttext">
                         Σχόλια:
                         <br />
-                        {res.comments.length}
+                        {nofcom}
                     </div>
                 </div>
             </div>

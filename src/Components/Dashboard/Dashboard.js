@@ -6,7 +6,6 @@ import Container from './Container';
 import Results from '../Results/Results';
 import Sure from './SureD';
 import PopUp from './PopUpD';
-import Sort from '../Sort/Sort';
 import './Dashboard.css';
 import users from '../Data/users.json';
 import experiments from '../Data/experiments.json';

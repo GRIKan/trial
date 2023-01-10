@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PinGreen from '../../Images/pingreen.png';
 import Show from '../../Images/show.png';
@@ -7,7 +7,7 @@ import Hide from '../../Images/hide.png';
 import Button from '../../Images/greenfull.png';
 import Connect from '../../Images/greenflip.png';
 
-const Login = ( {users, setUser} ) => {
+const Login = ( {users, user, setUser} ) => {
     const [inputMail, setInputMail] = useState("");
     const [inputPass, setInputPass] = useState("");
     
@@ -27,6 +27,10 @@ const Login = ( {users, setUser} ) => {
             end.setSelectionRange(len, len);
         };
     }, [eye]);
+
+    if (user !== '0') {
+        return <Navigate to="/dashboard" replace />;
+    };
 
     const inputMailHandler = (e) => {
         setInputMail(e.target.value);

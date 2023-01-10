@@ -55,35 +55,38 @@ const Options = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
 
     return (
         <form className= "options" id= "containerdscrollbar" onSubmit= {changedata}>
-            <div className= "thetextareas">
-                <div className= "optionarea" id="tasksside">
-                    <div className= "optionstitle">Οδηγίες πειράματος:</div>
-                    <textarea className= "taskstextarea" id= "containerdscrollbar" placeholder= "Εισαγωγή οδηγιών..." 
-                        title= {inputTasks} value= {inputTasks} autoComplete= "off" onChange= {inputTasksHandler} 
-                        style= {{borderColor: (redTasks? 'red' : 'black')}} >
-                    </textarea>
-                    <div id= "tasksinfo">
-                        *Οι οδηγίες πειράματος θα εμφανιστούν στους συμμετέχοντες σε ένα αρχείο κειμένου που θα κατέβει στον υπολογιστή τους. Οι διαθέσιμες γλώσσες είναι ελληνικά και αγγλικά, οπότε ανάλογα με το που απευθύνεστε μπορείτε να επιλέξετε να δώσετε τις οδηγίες σας σε μια ή και στις δυο γλώσσες.
+            <div className= "optionscontainer">
+                <div className= "thetextareas">
+                    <div className= "optionarea" id="tasksside">
+                        <div className= "optionstitle">Οδηγίες πειράματος:</div>
+                        <textarea className= "taskstextarea" id= "containerdscrollbar" placeholder= "Εισαγωγή οδηγιών..." 
+                            title= {inputTasks} value= {inputTasks} autoComplete= "off" onChange= {inputTasksHandler} 
+                            style= {{borderColor: (redTasks? 'red' : 'black')}} disabled= {exp.publish} >
+                        </textarea>
+                        <div id= "tasksinfo">
+                            *Οι οδηγίες πειράματος θα εμφανιστούν στους συμμετέχοντες σε ένα αρχείο κειμένου που θα κατέβει στον υπολογιστή τους. Οι διαθέσιμες γλώσσες είναι ελληνικά και αγγλικά, οπότε ανάλογα με το που απευθύνεστε μπορείτε να επιλέξετε να δώσετε τις οδηγίες σας σε μια ή και στις δυο γλώσσες.
+                        </div>
+                    </div>
+                    <div className= "optionarea" id= "thankyouside">
+                        <div className= "optionstitle" id= "endtitle">Στο τέλος του πειράματος</div>
+                        <div className= "bye">
+                            <input type="checkbox" id="byemessage" name="byemessage" value="byemessage" 
+                                defaultChecked= {exp.goodbye[0]} required= {redBye} disabled= {exp.publish} />
+                            <label htmlFor= "byemessage" style= {{color: (redBye? 'red' : 'black')}}>
+                                Εμφάνιση μηνύματος τέλους.
+                            </label>
+                        </div>
+                        <div className= "optionstitle">ή</div>
+                        <div id= "byelinktitle">Ορισμός ιστοσελίδας για μετάβαση:</div>
+                        <input className= "expform" type= "text"
+                            title= {inputBye} value= {inputBye} autoComplete= "off" onChange= {inputByeHandler}
+                            style= {{borderColor: (redBye? 'red' : 'black')}} disabled= {exp.publish} />
                     </div>
                 </div>
-                <div className= "optionarea" id= "thankyouside">
-                    <div className= "optionstitle" id= "endtitle">Στο τέλος του πειράματος</div>
-                    <div className= "bye">
-                        <input type="checkbox" id="byemessage" name="byemessage" value="byemessage" 
-                            defaultChecked= {exp.goodbye[0]} required= {redBye} />
-                        <label htmlFor= "byemessage" style= {{color: (redBye? 'red' : 'black')}}>
-                            Εμφάνιση μηνύματος τέλους.
-                        </label>
-                    </div>
-                    <div className= "optionstitle">ή</div>
-                    <div id= "byelinktitle">Ορισμός ιστοσελίδας για μετάβαση:</div>
-                    <input className= "expform" type= "text"
-                        title= {inputBye} value= {inputBye} autoComplete= "off" onChange= {inputByeHandler}
-                        style= {{borderColor: (redBye? 'red' : 'black')}} />
+                <div className= "generalbutton">
+                    <input type= "submit" className= "savebutton" value= "Αποθήκευση" onClick= {check} 
+                        disabled= {exp.publish} />
                 </div>
-            </div>
-            <div className= "generalbutton">
-                <input type= "submit" className= "savebutton" value= "Αποθήκευση" onClick= {check} />
             </div>
         </form>
     )

@@ -5,21 +5,21 @@
         "datecreated": "21/12/2022, 8:1:38",
         "datemod": "21/12/2022, 8:1:40",
         "type": "open",
-        "datestart": "2022-12-25T10:10",
-        "datestop": "2022-12-25T20:20",
+        "datestart": "",
+        "datestop": "",
         "publish": true,
         "instructions": "chase your dreams",
-        "goodbye": [false, "www.google.com"],
+        "goodbye": [false, "https://www.google.com/"],
         "cards": {
-            "card-1": { "card_id": "card-1", "card_name": "Applejkfvhskfhvbskehkehkshksjehksehkfshhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhk"},
-            "card-2": { "card_id": "card-2", "card_name": "Carrot"},
-            "card-3": { "card_id": "card-3", "card_name": "Potato"},
-            "card-4": { "card_id": "card-4", "card_name": "Sweet Potato"},
-            "card-5": { "card_id": "card-5", "card_name": "Tomato"},
-            "card-6": { "card_id": "card-6", "card_name": "Pineapple"},
-            "card-7": { "card_id": "card-7", "card_name": "Cherries"},
-            "card-8": { "card_id": "card-8", "card_name": "Ham"},
-            "card-9": { "card_id": "card-9", "card_name": "Feta"}
+            "card-1": { "id": "card-1", "name": "Applejkfvhskfhvbskehkehkshksjehksehkfshhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhk"},
+            "card-2": { "id": "card-2", "name": "Carrot"},
+            "card-3": { "id": "card-3", "name": "Potato"},
+            "card-4": { "id": "card-4", "name": "Sweet Potato"},
+            "card-5": { "id": "card-5", "name": "Tomato"},
+            "card-6": { "id": "card-6", "name": "Pineapple"},
+            "card-7": { "id": "card-7", "name": "Cherries"},
+            "card-8": { "id": "card-8", "name": "Ham"},
+            "card-9": { "id": "card-9", "name": "Feta"}
         },
         "randomizecards": true,
         "unsorted": true,
@@ -29,24 +29,24 @@
     },
     {
         "exp_id": "2",
-        "name": "EXP2",
+        "name": "Αξιολόγηση1 Σελίδας Sort του Sort-it!",
         "datecreated": "21/12/2022, 8:1:41",
         "datemod": "21/12/2022, 8:1:45",
         "type": "close",
         "datestart": "2022-12-25T10:10",
-        "datestop": "2022-12-25T20:20",
-        "publish": false,
+        "datestop": "2023-01-07T12:52",
+        "publish": true,
         "instructions": "follow the leader",
-        "goodbye": [1, ""],
+        "goodbye": [true, ""],
         "cards": {
-            "card-1": { "card_id": "card-1", "card_name": "drgd"},
-            "card-2": { "card_id": "card-2", "card_name": "gdzrdr"}
+            "card-1": { "id": "card-1", "name": "drgd"},
+            "card-2": { "id": "card-2", "name": "gdzrdr"}
         },
         "randomizecards": false,
         "unsorted": false,
         "categories": {
-            "category-1": { "category_id": "category-1", "category_name": "Fruits"},
-            "category-2": { "category_id": "category-2", "category_name": "Veggies"}
+            "category-1": { "id": "category-1", "name": "Fruits"},
+            "category-2": { "id": "category-2", "name": "Veggies"}
         },
         "randomizecategories": true,
         "user_id": "1"
@@ -63,8 +63,8 @@
         "instructions": "listen to your heart",
         "goodbye": [false, "www.post-it.com"],
         "cards": {
-            "card-1": { "card_id": "card-1", "card_name": "drgd"},
-            "card-2": { "card_id": "card-2", "card_name": "gdzrdr"}
+            "card-1": { "id": "card-1", "name": "drgd"},
+            "card-2": { "id": "card-2", "name": "gdzrdr"}
         },
         "randomizecards": true,
         "unsorted": true,

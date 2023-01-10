@@ -48,7 +48,7 @@ const AddCategories = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
         var finalcategories= {};
         categories.map((item, index) => {
             finalcategory=  {[`category-${index + 1}`] : 
-                { category_id: `category-${index + 1}`, category_name: item.category_name}};
+                { id: `category-${index + 1}`, name: item.name}};
             finalcategories= {...finalcategories, ...finalcategory};
             return finalcategories;
         });
@@ -98,7 +98,7 @@ const AddCategories = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
         else {
             var newCategories= [];
             importedCategories.map((item, index) => {
-                var newCategory= { category_id: `category-${index + 1}`, category_name: item};
+                var newCategory= { id: `category-${index + 1}`, name: item};
                 newCategories= [...newCategories, newCategory];
                 return newCategories;
             });
@@ -127,7 +127,9 @@ const AddCategories = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
     };
 
     const deleteAll = () => {
-        setSure(2);
+        if (!exp.publish) {
+            setSure(2);
+        };
     };
 
     const addaCategory = () => {
@@ -152,7 +154,7 @@ const AddCategories = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
             else {
                 var checkValues= [];
                 categories.map((category) => {
-                    return checkValues= [...checkValues, category.category_name];
+                    return checkValues= [...checkValues, category.name];
                 });
                 if (checkValues.includes(inputCategory)) {
                     e.preventDefault();
@@ -161,7 +163,7 @@ const AddCategories = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
                     setInputCategory(inputCategory + exist);
                 }
                 else {
-                    const newCategory= {category_id: `category-${categories.length + 1}`, category_name: inputCategory};
+                    const newCategory= {id: `category-${categories.length + 1}`, name: inputCategory};
                     // console.log(newCard);
                     setCategories([...categories, newCategory]);
                 };
@@ -208,11 +210,18 @@ const AddCategories = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
     };
 
     const deleteCategory = (index) => {
-        const newCategories= Array.from(categories);
-        newCategories.splice(index, 1);
-        setCategories(newCategories);
-
-        setPop(4);
+        if (!exp.publish) {
+            const theNew= [];
+            const newCategories= Array.from(categories);
+            newCategories.splice(index, 1);
+            newCategories.map((item, index) => {
+                theNew.push({id: `category-${index + 1}`, name: item.name});
+                return item;
+            });
+            setCategories(theNew);
+    
+            setPop(4);
+        };
     };
 
     return (
@@ -220,9 +229,9 @@ const AddCategories = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
             <div className= "cardsside">
                 <div className= "cardsheader">
                     <button className= "cardsbutton" id= "importcards" onClick= {importCategories}
-                        onMouseOver= {() => setOver1(true)} onMouseOut= {() => setOver1(false)} >
+                        onMouseOver= {() => setOver1(true)} onMouseOut= {() => setOver1(false)} disabled= {exp.publish} >
                             <span>Ανέβασμα</span>
-                            <img src= {over1? Add : WhiteAdd} alt= "Add Multiple Icon" />
+                            <img src= {(over1 && !exp.publish)? Add : WhiteAdd} alt= "Add Multiple Icon" />
                     </button>
                     <div id= "totalcards">
                         #
@@ -230,14 +239,15 @@ const AddCategories = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
                             No:&nbsp;
                         </span>
                         {categories.length}
-                        <div className= "iconhover" onClick= {deleteAll}>
+                        <div className= "iconhover" onClick= {deleteAll} data-isdisabled= {exp.publish} 
+                            title= "Διαγραφή όλων" >
                                 <img src= {Delete} alt= "Delete Icon" />
                         </div>
                     </div>
                     <button className= "cardsbutton" id= "addcards" onClick= {addaCategory} data-inadd= {true}
-                        onMouseOver= {() => setOver2(true)} onMouseOut= {() => setOver2(false)} >
+                        onMouseOver= {() => setOver2(true)} onMouseOut= {() => setOver2(false)} disabled= {exp.publish} >
                             <span>Προσθήκη</span>
-                            <img src= {over2? Plus : WhitePlus} alt= "Add Icon" />
+                            <img src= {(over2 && !exp.publish)? Plus : WhitePlus} alt= "Add Icon" />
                     </button>
                 </div>
                 <div className= "cardsbody" id= "containerdscrollbar">
@@ -285,10 +295,11 @@ const AddCategories = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
                     </form>}
                     {categories.map((category, index) => {
                         return (
-                            <div key= {category.category_id} className= "addedcard">
-                                <span>{category.category_name}</span>
-                                <div id= "deletecardicon" onClick= {() => deleteCategory(index)}>
-                                    <img src= {x} alt= "Delete Card Icon" />
+                            <div key= {category.id} className= "addedcard">
+                                <span>{category.name}</span>
+                                <div id= "deletecardicon" onClick= {() => deleteCategory(index)} 
+                                    title= "Διαγραφή κατηγορίας" data-isdisabled= {exp.publish} >
+                                        <img src= {x} alt= "Delete Card Icon" />
                                 </div>
                             </div>
                         )
@@ -299,12 +310,13 @@ const AddCategories = ( {exp, setExp, expIndex, exps, setExps, setPop} ) => {
                 <form className= "settingscontainer" onSubmit= {updatetheStates}>
                     <div className= "settingscheckbox">
                         <input type="checkbox" id="randomizecards" name="randomizecards" value="randomizecards" 
-                                defaultChecked= {exp.randomizecategories} />
+                                defaultChecked= {exp.randomizecategories} disabled= {exp.publish} />
                         <label htmlFor= "randomizecards">
                             Εμφάνιση σειράς κατηγοριών σε τυχαία σειρά.
                         </label>
                     </div>
-                    <input type= "submit" className= "savecardbutton" value= "Ενημέρωση" onClick= {updateStates} />
+                    <input type= "submit" className= "savecardbutton" value= "Ενημέρωση" onClick= {updateStates} 
+                        disabled= {exp.publish} />
                 </form>
             </div>
             <AnimatePresence>

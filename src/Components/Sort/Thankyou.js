@@ -11,21 +11,39 @@ const thanksVariants = {
     }
 }
 
-const Thankyou = () => {
+const Thankyou = ( {changelang, bye} ) => {
         return(
             <div className= "thankyou">
                 <motion.div className= "thankyoucontainer" {...thanksVariants}>
-                    {/* <p id= "thanks">THANK YOU!</p>
-                    <p id= "note">You can close the page now.</p> */}
-                    <p id= "thanks">Ευχαριστούμε!</p>
-                    <p id= "note">Μεταβείτε στον παρακάτω σύνδεσμο για να απαντήσετε σε ένα σύντομο 
-                        <br />
-                        <motion.a href= "https://forms.gle/ck4FYHxgS9dU7SLb8" target= "_blank" rel="noopener noreferrer"
-                            style= {{ fontWeight: 'bold' }} whileHover= {{ scale: 1.2 }} >
-                            ερωτηματολόγιο
-                        </motion.a>
-                        .
+                    <p id= "thanks">
+                        {changelang ?
+                                "THANK YOU!"
+                            : 
+                                "Ευχαριστούμε!"
+                        }
                     </p>
+                    <div id= "note">
+                        {(bye[0]) ?
+                            (changelang ?
+                                "You can close the page now."
+                            : 
+                                "Μπορείτε να κλείσετε τη σελίδα τώρα."
+                            )
+                        :
+                            <p>
+                                {changelang ?
+                                    "Go to the following website to complete the test:"
+                                : 
+                                    "Μεταβείτε στον παρακάτω ιστότοπο για να ολοκληρώσετε τη διαδικασία:"
+                                }
+                                <br />
+                                <motion.a href= {bye[1]} target= "_blank" rel="noopener noreferrer"
+                                    style= {{ fontSize: '0.9em' ,fontWeight: 'bold' }} whileHover= {{ scale: 1.2 }} >
+                                    {bye[1]}
+                                </motion.a>
+                            </p>
+                        }
+                    </div>
                 </motion.div>
             </div>
         );

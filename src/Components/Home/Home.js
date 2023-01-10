@@ -12,9 +12,9 @@ const Home = ( {users, setUsers, user, setUser} ) => {
     const [pop, setPop] = useState(0);
 
     // console.log(user);
-    if (user !== '0') {
-        return <Navigate to="/dashboard" replace />;
-    };
+    // if (user !== '0') {
+    //     return <Navigate to="/dashboard" replace />;
+    // };
 
     return (
         <div className= "home">
@@ -23,7 +23,8 @@ const Home = ( {users, setUsers, user, setUser} ) => {
                 <Route path= "/" element= {<Board />} />
                 <Route path= "/about" element= {<Notes />} />
                 <Route path= "/features" element= {<Notes />} />
-                <Route path= "/login" element= {<Notes users= {users} setUsers= {setUsers} setUser= {setUser} />} />
+                <Route path= "/login" element= {<Notes users= {users} setUsers= {setUsers} user= {user} 
+                    setUser= {setUser} />} />
                 <Route path= "/signup" element= {<Notes users= {users} setUsers= {setUsers} setPop= {setPop} />} />
                 <Route path= "/forgotpassword" element= {<Forgot setPop= {setPop} />} />
                 <Route path="*" element= {<Navigate to="/" />} />

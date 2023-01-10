@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Components/Home/Home';
 import Dashboard from './Components/Dashboard/Dashboard';
-import Sort from './Components/Sort/Sort';
+import ChooseSort from './Components/Sort/ChooseSort';
 import allusers from './Components/Data/users.json';
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
                     <Route path= "/*" element= {<Home users= {users} setUsers= {setUsers} 
                         user= {user} setUser= {setUser} />} />
                     <Route path= "/dashboard/*" element= {<Dashboard userId= {user} setUserId= {setUser} />} />
-                    <Route path= "/sort/*" element= {<Sort />} />
+                    <Route path= "/sort/:id/*" element= {<ChooseSort />} />
                 </Routes>
                     {/* {auth && <Navigate to= "/dashboard" replace />} */}
             </BrowserRouter>
